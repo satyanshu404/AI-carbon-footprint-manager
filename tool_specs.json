@@ -1,0 +1,62 @@
+[
+    {
+        "name": "scrape_data",
+        "description": "Scrapes text content from a given HTML URL",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the web page to scrape data from"
+                }
+            },
+            "required": ["url"]
+        }
+    },
+    {
+        "name": "create_validation_script",
+        "description": "Creates a Python script using Pydantic to validate a JSON object based on a given data model",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "data_model": {
+                    "type": "object",
+                    "description": "The data model for the JSON object to be validated"
+                }
+            },
+            "required": ["data_model"]
+        }
+    },
+    {
+        "name": "extract_data_model_from_url",
+        "description": "Extracts a data model from a document located at a given URL. The function performs text extraction, document chunking, and further data processing to derive the data model.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "doc_url": {
+                    "type": "string",
+                    "description": "The URL of the document from which to extract the data model"
+                }
+            },
+            "required": ["doc_url"]
+        }
+    },
+    {
+        "name": "read_pdf",
+        "description": "Reads text content from PDF documents specified in a list of file paths. It opens each PDF, extracts text from all pages, and returns a list of extracted texts.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "docs_paths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of file paths to PDF documents"
+                }
+            },
+            "required": ["docs_paths"]
+        }
+    }
+    
+]
