@@ -1,460 +1,28 @@
 [
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "Energy reduction initiatives at Vijayanagar Plant",
-        "productIds": [
-            "VJY123"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "Vijayanagar",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": 110.469,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": null,
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Vijayanagar"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "Energy reduction initiatives at Tuticorin Plant",
-        "productIds": [
-            "TUT123"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "Tuticorin",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": null,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": null,
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Tuticorin"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "Hydro-Sholtu",
-        "productIds": [
-            "HS123"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "Hydro-Sholtu",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": null,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": null,
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Tuticorin"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "Dharapuram",
-        "productIds": [
-            "DH123"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "Dharapuram",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": null,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": null,
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Tuticorin"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "JSW Salav",
-        "productIds": [
-            "JSW_SALAV_001"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "JSW Salav",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": null,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": {
-                "FY2021": 14481410.36,
-                "FY2022": 15086661.31,
-                "FY2023": 16062495.59
-            },
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Tuticorin"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "Barmer",
-        "productIds": [
-            "JSW_BARMER_001"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "Barmer",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": null,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": {
-                "FY2021": 14481410.36,
-                "FY2022": 15086661.31,
-                "FY2023": 16062495.59
-            },
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Barmer"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
+            null
         ],
         "productDescription": "JSW Steel Coated Products",
         "productIds": [
-            "JSW_STEEL_COATED_001"
+            null
         ],
         "productCategoryCpc": null,
         "productNameCompany": "JSW Steel Coated Products",
         "pcf": {
-            "declaredUnit": "GJ",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": {
-                "FY2021": 14481410.36,
-                "FY2022": 15086661.31,
-                "FY2023": 16062495.59
-            },
+            "fossilGhgEmissions": null,
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
             "dLucGhgEmissions": null,
@@ -464,26 +32,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "Barmer"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -496,38 +75,38 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
+            null
         ],
-        "productDescription": "Fluxes",
+        "productDescription": "JSW Salav",
         "productIds": [
-            "FLUXES_001"
+            null
         ],
         "productCategoryCpc": null,
-        "productNameCompany": "Fluxes",
+        "productNameCompany": "JSW Salav",
         "pcf": {
-            "declaredUnit": "GJ",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": 14481410.36,
-                "FY2022": 15086661.31,
-                "FY2023": 16062495.59
+                "scope1": 16062495.59,
+                "scope2": 26293.23,
+                "scope3": 1634696.75
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -538,26 +117,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "Barmer"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -570,38 +160,38 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
+            null
         ],
-        "productDescription": "JSW ARCL",
+        "productDescription": "Vijayanagar",
         "productIds": [
-            "JSW_ARCL_001"
+            null
         ],
         "productCategoryCpc": null,
-        "productNameCompany": "JSW ARCL",
+        "productNameCompany": "Vijayanagar",
         "pcf": {
-            "declaredUnit": "GJ",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": 14481410.36,
-                "FY2022": 15086661.31,
-                "FY2023": 16062495.59
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -612,26 +202,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "Barmer"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -644,186 +245,38 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "Sandur-Vijayanagar",
-        "productIds": [
-            "JSW_SANDUR_VIJAYANAGAR_001"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "Sandur-Vijayanagar",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": null,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": {
-                "FY2021": 14481410.36,
-                "FY2022": 15086661.31,
-                "FY2023": 16062495.59
-            },
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Barmer"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
-        ],
-        "productDescription": "Solar-Vijayanagar",
-        "productIds": [
-            "JSW_SOLAR_VIJAYANAGAR_001"
-        ],
-        "productCategoryCpc": null,
-        "productNameCompany": "Solar-Vijayanagar",
-        "pcf": {
-            "declaredUnit": "GJ",
-            "unitaryProductAmount": null,
-            "pCfExcludingBiogenic": null,
-            "pCfIncludingBiogenic": null,
-            "fossilGhgEmissions": {
-                "FY2021": null,
-                "FY2022": null,
-                "FY2023": null
-            },
-            "fossilCarbonContent": null,
-            "biogenicCarbonContent": null,
-            "dLucGhgEmissions": null,
-            "landManagementGhgEmissions": null,
-            "otherBiogenicGhgEmissions": null,
-            "iLucGhgEmissions": null,
-            "biogenicCarbonWithdrawal": null,
-            "aircraftGhgEmissions": null,
-            "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
-            "productOrSectorSpecificRules": [
-                {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
-                    "otherOperatorName": null
-                }
-            ],
-            "biogenicAccountingMethodology": null,
-            "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
-            "geographicScope": {
-                "geographyRegionOrSubregion": "Vijayanagar"
-            },
-            "secondaryEmissionFactorSources": [],
-            "exemptedEmissionsPercent": null,
-            "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
-            "allocationRulesDescription": null,
-            "uncertaintyAssessmentDescription": null,
-            "primaryDataShare": null,
-            "dqi": {
-                "coveragePercent": null,
-                "technologicalDQR": null,
-                "temporalDQR": null,
-                "geographicalDQR": null,
-                "completenessDQR": null,
-                "reliabilityDQR": null
-            },
-            "assurance": {
-                "assured": false,
-                "providerName": null
-            }
-        }
-    },
-    {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
-        "companyIds": [
-            "JSW123"
+            null
         ],
         "productDescription": "Ratnagiri",
         "productIds": [
-            "JSW_RATNAGIRI_001"
+            null
         ],
         "productCategoryCpc": null,
         "productNameCompany": "Ratnagiri",
         "pcf": {
-            "declaredUnit": "GJ",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": 0.68,
-                "FY2022": 0.68,
-                "FY2023": 0.685
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -834,26 +287,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "Ratnagiri"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -866,38 +330,38 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
+            null
         ],
-        "productDescription": "Iron Ore",
+        "productDescription": "Solar-Vijayanagar",
         "productIds": [
-            "JSW_IRON_ORE_001"
+            null
         ],
         "productCategoryCpc": null,
-        "productNameCompany": "Iron Ore",
+        "productNameCompany": "Solar-Vijayanagar",
         "pcf": {
-            "declaredUnit": "GJ",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": 0.68,
-                "FY2022": 0.68,
-                "FY2023": 0.685
+                "scope1": 0.685,
+                "scope2": null,
+                "scope3": null
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -908,26 +372,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "Ratnagiri"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -940,38 +415,293 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
+            null
         ],
-        "productDescription": "Industrial Gases",
+        "productDescription": "Dharapuram",
         "productIds": [
-            "JSW_INDUSTRIAL_GASES_001"
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Dharapuram",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": 0.685,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "Sandur-Vijayanagar",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Sandur-Vijayanagar",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": 0.685,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "Tuticorin",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Tuticorin",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": 0.685,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "JSW Industrial Gases",
+        "productIds": [
+            null
         ],
         "productCategoryCpc": null,
         "productNameCompany": "JSW Industrial Gases",
         "pcf": {
-            "declaredUnit": "GJ",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": 0.68,
-                "FY2022": 0.68,
-                "FY2023": 0.685
+                "scope1": 16062495.59,
+                "scope2": 26293.23,
+                "scope3": 1634696.75
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -982,26 +712,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "Ratnagiri"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -1014,38 +755,38 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
+            null
         ],
-        "productDescription": "Industrial Gases",
+        "productDescription": "JSW Industrial Gases",
         "productIds": [
-            "JSW_INDUSTRIAL_GASES_001"
+            null
         ],
         "productCategoryCpc": null,
         "productNameCompany": "Salboni",
         "pcf": {
-            "declaredUnit": "GJ",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": null,
-                "FY2022": null,
-                "FY2023": 10146.12
+                "scope1": 16062495.59,
+                "scope2": 26293.23,
+                "scope3": 1634696.75
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -1056,26 +797,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "Ratnagiri"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -1088,38 +840,38 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
+            null
         ],
         "productDescription": "JSW Mines",
         "productIds": [
-            "JSW_MINES_001"
+            null
         ],
         "productCategoryCpc": null,
-        "productNameCompany": "JSW Mines",
+        "productNameCompany": "Salboni",
         "pcf": {
-            "declaredUnit": "MWh",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": 0.68,
-                "FY2022": 0.68,
-                "FY2023": 0.685
+                "scope1": 16062495.59,
+                "scope2": 26293.23,
+                "scope3": 1634696.75
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -1130,26 +882,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "All major power plants"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -1162,38 +925,38 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
                 "providerName": null
             }
         }
     },
     {
-        "id": "document_1",
-        "specVersion": "1.0",
-        "version": "1.0",
-        "created": "2023-10-01T00:00:00Z",
-        "status": "active",
-        "validityPeriodStart": "2022-04-01",
-        "validityPeriodEnd": "2023-03-31",
-        "companyName": "JSW Energy Limited",
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
         "companyIds": [
-            "JSW123"
+            null
         ],
         "productDescription": "JSW Mines",
         "productIds": [
-            "JSW_MINES_001"
+            null
         ],
         "productCategoryCpc": null,
         "productNameCompany": "Nandyal",
         "pcf": {
-            "declaredUnit": "MWh",
+            "declaredUnit": null,
             "unitaryProductAmount": null,
             "pCfExcludingBiogenic": null,
             "pCfIncludingBiogenic": null,
             "fossilGhgEmissions": {
-                "FY2021": 0.68,
-                "FY2022": 0.68,
-                "FY2023": 0.685
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
             },
             "fossilCarbonContent": null,
             "biogenicCarbonContent": null,
@@ -1204,26 +967,37 @@
             "biogenicCarbonWithdrawal": null,
             "aircraftGhgEmissions": null,
             "characterizationFactors": null,
-            "ipccCharacterizationFactorsSources": [],
-            "crossSectoralStandardsUsed": [],
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "manufacturer",
-                    "ruleNames": [],
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
                     "otherOperatorName": null
                 }
             ],
             "biogenicAccountingMethodology": null,
             "boundaryProcessesDescription": null,
-            "referencePeriodStart": "2022-04-01",
-            "referencePeriodEnd": "2023-03-31",
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
             "geographicScope": {
-                "geographyRegionOrSubregion": "All major power plants"
+                "geographyRegionOrSubregion": null
             },
-            "secondaryEmissionFactorSources": [],
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
             "exemptedEmissionsPercent": null,
             "exemptedEmissionsDescription": null,
-            "packagingEmissionsIncluded": false,
+            "packagingEmissionsIncluded": null,
             "allocationRulesDescription": null,
             "uncertaintyAssessmentDescription": null,
             "primaryDataShare": null,
@@ -1236,7 +1010,517 @@
                 "reliabilityDQR": null
             },
             "assurance": {
-                "assured": false,
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "JSW Mines",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Hydro-Sholtu",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "JSW Mines",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Fluxes",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "Wastewater Recycled",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Wastewater Recycled",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "Barmer",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Barmer",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "Iron Ore",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Iron Ore",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": null,
+                "scope2": null,
+                "scope3": null
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
+                "providerName": null
+            }
+        }
+    },
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": null,
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "Iron Ore",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "JSW ARCL",
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": {
+                "scope1": 16062495.59,
+                "scope2": 26293.23,
+                "scope3": 1634696.75
+            },
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
+            ],
+            "crossSectoralStandardsUsed": [
+                null
+            ],
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
+                }
+            ],
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
+                }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assured": null,
                 "providerName": null
             }
         }

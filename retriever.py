@@ -32,83 +32,83 @@ def main():
                             'data/reterival_data/Untitled spreadsheet.xlsx']
     
     data_model = {
-  "id": "A unique identifier for the document or item.",
-  "specVersion": "The version of the specification that this document adheres to.",
-  "version": "A numeric version of this document or item.",
-  "created": "A timestamp indicating when the document or item was created.",
-  "status": "The current status of the document or item (e.g., active, inactive, draft).",
-  "validityPeriodStart": "The start date of the period during which the document or item is valid.",
-  "validityPeriodEnd": "The end date of the period during which the document or item is valid.",
-  "companyName": "The name of the company associated with the document or item.",
+  "id": "A unique identifier for the document or item, if not present provide null.",
+  "specVersion": "The version of the specification that this document adheres to, if not present provide null.",
+  "version": "A numeric version of this document or item, if not present provide null.",
+  "created": "A timestamp indicating when the document or item was created, if not present provide null.",
+  "status": "The current status of the document or item (e.g., active, inactive, draft), if not present provide null.",
+  "validityPeriodStart": "The start date of the period during which the document or item is valid, if not present provide null.",
+  "validityPeriodEnd": "The end date of the period during which the document or item is valid, if not present provide null.",
+  "companyName": "The name of the company associated with the document or item, if not present provide null.",
   "companyIds": [
-    "An identifier for the company."
+    "An identifier for the company, if not present provide null."
   ],
-  "productDescription": "A description of the product.",
+  "productDescription": "A description of the product, if not present provide null.",
   "productIds": [
-    "An identifier for the product."
+    "An identifier for the product, if not present provide null."
   ],
-  "productCategoryCpc": "The category code for the product (e.g., CPC code).",
-  "productNameCompany": "The product name as given by the company.",
+  "productCategoryCpc": "The category code for the product (e.g., CPC code), if not present provide null.",
+  "productNameCompany": "The product name as given by the company, if not present provide null.",
   "pcf": {
-    "declaredUnit": "The unit in which the product's environmental data is declared.",
-    "unitaryProductAmount": "The amount of the product in the declared unit.",
-    "pCfExcludingBiogenic": "The product carbon footprint excluding biogenic emissions.",
-    "pCfIncludingBiogenic": "The product carbon footprint including biogenic emissions.",
-    "fossilGhgEmissions": "The amount of fossil greenhouse gas emissions.",
-    "fossilCarbonContent": "The amount of fossil carbon content.",
-    "biogenicCarbonContent": "The amount of biogenic carbon content.",
-    "dLucGhgEmissions": "The amount of direct land use change greenhouse gas emissions.",
-    "landManagementGhgEmissions": "The amount of greenhouse gas emissions from land management.",
-    "otherBiogenicGhgEmissions": "The amount of other biogenic greenhouse gas emissions.",
-    "iLucGhgEmissions": "The amount of indirect land use change greenhouse gas emissions.",
-    "biogenicCarbonWithdrawal": "The amount of biogenic carbon withdrawal.",
-    "aircraftGhgEmissions": "The amount of greenhouse gas emissions from aircraft.",
-    "characterizationFactors": "Characterization factors used in the assessment.",
+    "declaredUnit": "The unit in which the product's environmental data is declared, if not present provide null.",
+    "unitaryProductAmount": "The amount of the product in the declared unit, if not present provide null.",
+    "pCfExcludingBiogenic": "The product carbon footprint excluding biogenic emissions, if not present provide null.",
+    "pCfIncludingBiogenic": "The product carbon footprint including biogenic emissions, if not present provide null.",
+    "fossilGhgEmissions": "The amount of fossil greenhouse gas emissions, if not present provide null.",
+    "fossilCarbonContent": "The amount of fossil carbon content, if not present provide null.",
+    "biogenicCarbonContent": "The amount of biogenic carbon content, if not present provide null.",
+    "dLucGhgEmissions": "The amount of direct land use change greenhouse gas emissions, if not present provide null.",
+    "landManagementGhgEmissions": "The amount of greenhouse gas emissions from land management, if not present provide null.",
+    "otherBiogenicGhgEmissions": "The amount of other biogenic greenhouse gas emissions, if not present provide null.",
+    "iLucGhgEmissions": "The amount of indirect land use change greenhouse gas emissions, if not present provide null.",
+    "biogenicCarbonWithdrawal": "The amount of biogenic carbon withdrawal, if not present provide null.",
+    "aircraftGhgEmissions": "The amount of greenhouse gas emissions from aircraft, if not present provide null.",
+    "characterizationFactors": "Characterization factors used in the assessment, if not present provide null.",
     "ipccCharacterizationFactorsSources": [
-      "Sources of IPCC characterization factors."
+      "Sources of IPCC characterization factors, if not present provide null."
     ],
     "crossSectoralStandardsUsed": [
-      "Cross-sectoral standards used in the assessment."
+      "Cross-sectoral standards used in the assessment, if not present provide null."
     ],
     "productOrSectorSpecificRules": [
       {
-        "operator": "The type of operator (e.g., manufacturer, supplier).",
+        "operator": "The type of operator (e.g., manufacturer, supplier), if not present provide null.",
         "ruleNames": [
-          "Names of the rules applicable to the product or sector."
+          "Names of the rules applicable to the product or sector, if not present provide null."
         ],
-        "otherOperatorName": "The name of the operator if not categorized."
+        "otherOperatorName": "The name of the operator if not categorized, if not present provide null."
       }
     ],
-    "biogenicAccountingMethodology": "The methodology used for biogenic accounting.",
-    "boundaryProcessesDescription": "Description of the boundary processes considered.",
-    "referencePeriodStart": "The start date of the reference period.",
-    "referencePeriodEnd": "The end date of the reference period.",
+    "biogenicAccountingMethodology": "The methodology used for biogenic accounting, if not present provide null.",
+    "boundaryProcessesDescription": "Description of the boundary processes considered, if not present provide null.",
+    "referencePeriodStart": "The start date of the reference period, if not present provide null.",
+    "referencePeriodEnd": "The end date of the reference period, if not present provide null.",
     "geographicScope": {
-      "geographyRegionOrSubregion": "The geographic region or subregion covered."
+      "geographyRegionOrSubregion": "The geographic region or subregion covered, if not present provide null."
     },
     "secondaryEmissionFactorSources": [
       {
-        "name": "The name of the secondary emission factor source.",
-        "version": "The version of the secondary emission factor source."
+        "name": "The name of the secondary emission factor source, if not present provide null.",
+        "version": "The version of the secondary emission factor source, if not present provide null."
       }
     ],
-    "exemptedEmissionsPercent": "The percentage of emissions that are exempted.",
-    "exemptedEmissionsDescription": "Description of the exempted emissions.",
-    "packagingEmissionsIncluded": "Indicates if packaging emissions are included (true/false).",
-    "allocationRulesDescription": "Description of the allocation rules applied.",
-    "uncertaintyAssessmentDescription": "Description of the uncertainty assessment.",
-    "primaryDataShare": "The percentage of primary data used.",
+    "exemptedEmissionsPercent": "The percentage of emissions that are exempted, if not present provide null.",
+    "exemptedEmissionsDescription": "Description of the exempted emissions, if not present provide null.",
+    "packagingEmissionsIncluded": "Indicates if packaging emissions are included (true/false), if not present provide null.",
+    "allocationRulesDescription": "Description of the allocation rules applied, if not present provide null.",
+    "uncertaintyAssessmentDescription": "Description of the uncertainty assessment, if not present provide null.",
+    "primaryDataShare": "The percentage of primary data used, if not present provide null.",
     "dqi": {
-      "coveragePercent": "The percentage of coverage in the data quality indicator.",
-      "technologicalDQR": "The rating for technological data quality.",
-      "temporalDQR": "The rating for temporal data quality.",
-      "geographicalDQR": "The rating for geographical data quality.",
-      "completenessDQR": "The rating for completeness data quality.",
-      "reliabilityDQR": "The rating for reliability data quality."
+      "coveragePercent": "The percentage of coverage in the data quality indicator, if not present provide null.",
+      "technologicalDQR": "The rating for technological data quality, if not present provide null.",
+      "temporalDQR": "The rating for temporal data quality, if not present provide null.",
+      "geographicalDQR": "The rating for geographical data quality, if not present provide null.",
+      "completenessDQR": "The rating for completeness data quality, if not present provide null.",
+      "reliabilityDQR": "The rating for reliability data quality, if not present provide null."
     },
     "assurance": {
-      "assured": "Indicates if the data is assured (true/false).",
-      "providerName": "The name of the assurance provider."
+      "assured": "Indicates if the data is assured (true/false), if not present provide null.",
+      "providerName": "The name of the assurance provider, if not present provide null."
     }
   }
 }
