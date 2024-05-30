@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from constants import Constants
 import requests
 import os
+import re
 import pdfplumber
 from docx import Document
 import ast
@@ -269,6 +270,31 @@ def extract_text_from_html(file_path):
         soup = BeautifulSoup(file, 'html.parser')
         return soup.get_text()
 
+def clean_response(text:str, pattern:str):
+    """
+    Extracts a Python list from text surrounded by backticks (`) and the specified pattern.
+    
+    Args:
+    - text (str): Input text containing the Python list surrounded by backticks and pattern.
+    - pattern (str): The pattern (e.g., "python") to match and remove along with the backticks.
+    
+    Returns:
+    - list: The extracted Python list, or None if extraction fails.
+    """
+    # Construct regex pattern to match backticks and the specified pattern
+    pattern_regex = rf'^```(?:{pattern})?\n|\n```$'
+    
+    # Remove surrounding ``` and the specified pattern
+    cleaned_text = re.sub(pattern_regex, '', text, flags=re.MULTILINE)
+    
+    # Safely parse the Python list
+    try:
+        python_list = ast.literal_eval(cleaned_text.strip())
+        return python_list
+    except (ValueError, SyntaxError) as e:
+        print(f"Error extracting Python list: {e}")
+        return None
+
 def find_product_from_documents(file_paths:list[str], data_model: dict[str, str]) -> dict[str, str]:
     '''
     This function takes the file paths and data model as input and returns the name of the product for which data model is to be created.
@@ -279,26 +305,33 @@ def find_product_from_documents(file_paths:list[str], data_model: dict[str, str]
         products = []
         for chunk in chunks['data']:
             messages: list[dict[str, str]]=[
-            {"role": "system", "content": "You are a helpful assistant and give respone only as python list. You have the capability to understand the context of the given data and provide the response accordingly."},
-            {"role": "user", "content": f'''The below given chunk of data is the part of big company data which contains the information about the carbon footprints of the different products and some other relevant informations about many differnt products being used/developed by the company.
-             Our main goal is to create a json object which tells about the various informations about the product. For that we have to find the product names first for which we can create the json object in next stage.
-             First of all, Understand the following data properly:
-             Data Model: {data_model}
-             Note: This data model is an example which is taken from the documentation, it is non-relevant to the given company data, so exclude that part from the final results.
-             Document: {chunk}
+            {"role": "system", "content": "You are a advanced assistant having the capability to understand the instruction properly and context of the given data and provide the response accordingly and you always give respone only as python list."},
+            {"role": "user", "content": f'''
 
-             Now based on the given data model and document, Extract the product's name from the given document for we can create the similar data model so that we can evaluate the carbon footprints/emissions of the product for the given company. 
-             Return only a python list of the all product names for which the carbon or emmision data are provided in the documents, nothing else.         
-             NOTE: You will be highly penalized for including irrelevant things or non-important product names or including those names for which we can't create json object.               
-            '''}]
+            Please extract the names of products for which carbon footprint data can be extracted from the document. The document contains information about various products and their associated carbon footprints.
+
+            Data Model: {data_model}
+
+            Document: {chunk}
+
+            Our objective is to create a JSON object following the specified data model. This model is a standard format used in our documentation.
+
+            The PACT Initiative aims to facilitate decarbonization through a global network for exchanging verified product emissions data. This transparency helps businesses accurately measure, account for, and disclose their carbon emissions, supporting efforts to achieve net zero emissions by 2050.
+
+            Please return a Python list containing only the names of products for which carbon or emission data are explicitly provided in the document.
+            If there isn't any product name mentioned in the document, return an empty list.
+            Do not include any other than prodcut names in the final list avoid including city names or other things. 
+        '''}]
             response = call_gpt(messages, temperature=0.1)
             # if response['data']:
             # # cross check the products with the data model
             #     messages.append({'role': 'assistant', 'content': str(response['data'])})
             #     messages.append({'role': 'user', 'content': 'Cross check the above your product names and exclude those product names from the list which are irrelevant.'})
             #     response = call_gpt(messages)
+            print(response['data'].content)
             if response['data']:
-                products.extend(ast.literal_eval(response['data'].content))
+                product = clean_response(response['data'].content, 'python')
+                products.extend(product)
             else:
                 print(response['error'])
             

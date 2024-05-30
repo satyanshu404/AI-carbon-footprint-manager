@@ -32,86 +32,87 @@ def main():
                             'data/reterival_data/Untitled spreadsheet.xlsx']
     
     data_model = {
-      "id": "<unique-identifier>",
-      "specVersion": "<specification-version>",
-      "version": "<numeric-version>",
-      "created": "<timestamp>",
-      "status": "<status>",
-      "validityPeriodStart": "<start-date>",
-      "validityPeriodEnd": "<end-date>",
-      "companyName": "<company-name>",
-      "companyIds": [
-        "<company-identifier>"
-      ],
-      "productDescription": "<description>",
-      "productIds": [
-        "<product-identifier>"
-      ],
-      "productCategoryCpc": "<category-code>",
-      "productNameCompany": "<product-name>",
-      "pcf": {
-        "declaredUnit": "<unit>",
-        "unitaryProductAmount": "<quantity>",
-        "pCfExcludingBiogenic": "<amount>",
-        "pCfIncludingBiogenic": "<amount>",
-        "fossilGhgEmissions": "<emissions-amount>",
-        "fossilCarbonContent": "<content-amount>",
-        "biogenicCarbonContent": "<content-amount>",
-        "dLucGhgEmissions": "<emissions-amount>",
-        "landManagementGhgEmissions": "<emissions-amount>",
-        "otherBiogenicGhgEmissions": "<emissions-amount>",
-        "iLucGhgEmissions": "<emissions-amount>",
-        "biogenicCarbonWithdrawal": "<amount>",
-        "aircraftGhgEmissions": "<emissions-amount>",
-        "characterizationFactors": "<factors>",
-        "ipccCharacterizationFactorsSources": [
-          "<source>"
+  "id": "A unique identifier for the document or item.",
+  "specVersion": "The version of the specification that this document adheres to.",
+  "version": "A numeric version of this document or item.",
+  "created": "A timestamp indicating when the document or item was created.",
+  "status": "The current status of the document or item (e.g., active, inactive, draft).",
+  "validityPeriodStart": "The start date of the period during which the document or item is valid.",
+  "validityPeriodEnd": "The end date of the period during which the document or item is valid.",
+  "companyName": "The name of the company associated with the document or item.",
+  "companyIds": [
+    "An identifier for the company."
+  ],
+  "productDescription": "A description of the product.",
+  "productIds": [
+    "An identifier for the product."
+  ],
+  "productCategoryCpc": "The category code for the product (e.g., CPC code).",
+  "productNameCompany": "The product name as given by the company.",
+  "pcf": {
+    "declaredUnit": "The unit in which the product's environmental data is declared.",
+    "unitaryProductAmount": "The amount of the product in the declared unit.",
+    "pCfExcludingBiogenic": "The product carbon footprint excluding biogenic emissions.",
+    "pCfIncludingBiogenic": "The product carbon footprint including biogenic emissions.",
+    "fossilGhgEmissions": "The amount of fossil greenhouse gas emissions.",
+    "fossilCarbonContent": "The amount of fossil carbon content.",
+    "biogenicCarbonContent": "The amount of biogenic carbon content.",
+    "dLucGhgEmissions": "The amount of direct land use change greenhouse gas emissions.",
+    "landManagementGhgEmissions": "The amount of greenhouse gas emissions from land management.",
+    "otherBiogenicGhgEmissions": "The amount of other biogenic greenhouse gas emissions.",
+    "iLucGhgEmissions": "The amount of indirect land use change greenhouse gas emissions.",
+    "biogenicCarbonWithdrawal": "The amount of biogenic carbon withdrawal.",
+    "aircraftGhgEmissions": "The amount of greenhouse gas emissions from aircraft.",
+    "characterizationFactors": "Characterization factors used in the assessment.",
+    "ipccCharacterizationFactorsSources": [
+      "Sources of IPCC characterization factors."
+    ],
+    "crossSectoralStandardsUsed": [
+      "Cross-sectoral standards used in the assessment."
+    ],
+    "productOrSectorSpecificRules": [
+      {
+        "operator": "The type of operator (e.g., manufacturer, supplier).",
+        "ruleNames": [
+          "Names of the rules applicable to the product or sector."
         ],
-        "crossSectoralStandardsUsed": [
-          "<standard>"
-        ],
-        "productOrSectorSpecificRules": [
-          {
-            "operator": "<operator-type>",
-            "ruleNames": [
-              "<rule-name>"
-            ],
-            "otherOperatorName": "<name>"
-          }
-        ],
-        "biogenicAccountingMethodology": "<methodology>",
-        "boundaryProcessesDescription": "<description>",
-        "referencePeriodStart": "<start-date>",
-        "referencePeriodEnd": "<end-date>",
-        "geographicScope": {
-          "geographyRegionOrSubregion": "<region>"
-        },
-        "secondaryEmissionFactorSources": [
-          {
-            "name": "<source-name>",
-            "version": "<version>"
-          }
-        ],
-        "exemptedEmissionsPercent": "<percentage>",
-        "exemptedEmissionsDescription": "<description>",
-        "packagingEmissionsIncluded": "<boolean>",
-        "allocationRulesDescription": "<description>",
-        "uncertaintyAssessmentDescription": "<description>",
-        "primaryDataShare": "<percentage>",
-        "dqi": {
-          "coveragePercent": "<percentage>",
-          "technologicalDQR": "<rating>",
-          "temporalDQR": "<rating>",
-          "geographicalDQR": "<rating>",
-          "completenessDQR": "<rating>",
-          "reliabilityDQR": "<rating>"
-        },
-        "assurance": {
-          "assured": "<boolean>",
-          "providerName": "<name>"
-        }
+        "otherOperatorName": "The name of the operator if not categorized."
       }
+    ],
+    "biogenicAccountingMethodology": "The methodology used for biogenic accounting.",
+    "boundaryProcessesDescription": "Description of the boundary processes considered.",
+    "referencePeriodStart": "The start date of the reference period.",
+    "referencePeriodEnd": "The end date of the reference period.",
+    "geographicScope": {
+      "geographyRegionOrSubregion": "The geographic region or subregion covered."
+    },
+    "secondaryEmissionFactorSources": [
+      {
+        "name": "The name of the secondary emission factor source.",
+        "version": "The version of the secondary emission factor source."
+      }
+    ],
+    "exemptedEmissionsPercent": "The percentage of emissions that are exempted.",
+    "exemptedEmissionsDescription": "Description of the exempted emissions.",
+    "packagingEmissionsIncluded": "Indicates if packaging emissions are included (true/false).",
+    "allocationRulesDescription": "Description of the allocation rules applied.",
+    "uncertaintyAssessmentDescription": "Description of the uncertainty assessment.",
+    "primaryDataShare": "The percentage of primary data used.",
+    "dqi": {
+      "coveragePercent": "The percentage of coverage in the data quality indicator.",
+      "technologicalDQR": "The rating for technological data quality.",
+      "temporalDQR": "The rating for temporal data quality.",
+      "geographicalDQR": "The rating for geographical data quality.",
+      "completenessDQR": "The rating for completeness data quality.",
+      "reliabilityDQR": "The rating for reliability data quality."
+    },
+    "assurance": {
+      "assured": "Indicates if the data is assured (true/false).",
+      "providerName": "The name of the assurance provider."
     }
+  }
+}
+
     
     product_names = list(models.find_product_from_documents(file_paths, data_model))
     st.write(product_names)
@@ -150,19 +151,25 @@ def main():
             doc += f'\n\n {"="*50}'
         messages = [{'role': 'system', 'content': 'You are a helpful assistant and give respone only as json. You have the capability to understand the context of the given data and provide the response accordingly.'},
                     {'role': 'user', 'content': f'''
-                     You are provided with the company's environmental related data, like how much energy is consumed, how much a product release carbon and many more and You are also provided with the product name and an data model.
-                     Product name: {product_name}
-                     Documents: {doc}
-                     Data model: {data_model}
-                     Based on the the provided data and product name create a similar data_model which store all the carbon footprint data of the product. If you do not find the values for any field from the document, assign its value as null, do not make it up also do not delete that field. 
-                     You are strictly advised to provide the response in json format.
+                     Our main goal is to create a JSON object detailing various product-related information. You are provided with the company's environmental data, such as energy consumption, carbon emissions, and more, along with the product name and a data model. Follow these steps:
+
+                      1. Understand the provided data:
+                        - Product name: {product_name}
+                        - Documents: {doc}
+                        - Data model: {data_model}
+
+                      2. Based on the provided data and product name, create a similar data model that stores all the carbon footprint data of the product.
+
+                      3. If any field's values are missing in the document, assign its value as null. Do not make up its values or remove fields.
+
+                      4. Provide the response strictly in JSON format.
         '''}]
         data_model = models.call_gpt(messages, temperature=0)['data'].content.strip()
         data_model = data_model.split("```")[1].split("json")[-1].strip()
         print(f"{id+1}th Data Model successfully created.")
         json_objects.append(json.loads(data_model))
     st.write(json_objects)
-    file_name = "data/data_model.json"
+    file_name = "data/data_model/data_model.json"
 
     # Open a file in write mode
     with open(file_name, 'w') as json_file:
