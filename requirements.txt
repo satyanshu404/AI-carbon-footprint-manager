@@ -9,4 +9,5 @@ pymupdf
 streamlit
 pdfplumber
 python-docx
+PyPDF2
 

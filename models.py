@@ -1,4 +1,5 @@
 import os
+import json
 from openai import OpenAI
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -27,6 +28,7 @@ os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
 
 def call_gpt(messages: list[dict[str, str]], 
              functions:list[dict] = None, 
+             tools:list[dict] = None,
              response_format:str = None,
              temperature:float = Constants().TEMPERATURE,
              model: str = Constants().MODEL_NAME) -> dict[str, str]:
@@ -37,6 +39,7 @@ def call_gpt(messages: list[dict[str, str]],
         chat_completion = client.chat.completions.create(
         messages=messages,
         functions=functions,
+        tools=tools,
         temperature=temperature,
         model=model,
         )
@@ -270,6 +273,11 @@ def extract_text_from_html(file_path):
         soup = BeautifulSoup(file, 'html.parser')
         return soup.get_text()
 
+def extract_text_from_json(file_path:str) -> str:
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return data
+
 def clean_response(text:str, pattern:str):
     """
     Extracts a Python list from text surrounded by backticks (`) and the specified pattern.
@@ -341,3 +349,43 @@ def find_product_from_documents(file_paths:list[str], data_model: dict[str, str]
         print(error)
         
     return None
+
+def generate_summary_from_data_model(file_path:str) -> list[dict[str, str]]:
+    try:
+        json_objects = extract_text_from_json(file_path)
+        if not json_objects:
+            return None
+        docs = []
+        for json_object in json_objects:
+            messages = [
+                {"role": "system", "content": "You are a helpful assistant. You have the capability to think and to understand the given instructions."},
+                {"role": "user", "content": f'''
+                Objective: Generate a natural language summary of the given JSON object, incorporating all key-value pairs where the value is not null.
+                Input:
+                A JSON object containing various fields with corresponding values.
+                                
+                Output:
+                A text summary in natural language that includes:
+                Descriptions of each field and its corresponding value.
+                Only those fields where the value is not null.
+                                
+                Guidelines:
+                Examine each field in the JSON object.
+                If the value of a field is null, exclude that field from the summary.
+                For fields with non-null values, describe them in a coherent sentence.
+                Ensure that the summary is clear, concise, and reads like a natural language description.
+                                
+                JSON Object: {json_object}
+
+                Give only the summary as the response.
+                 
+            '''}]
+
+            summary_response = call_gpt(messages)
+            if summary_response['data']:
+                docs.append({"summary": summary_response['data'].content, "json_object": json_object})
+        return docs
+    except Exception as e:
+        print("Error in generate_summary: ", str(e))
+        return []
+    

@@ -1,5 +1,8 @@
 .env
+__pycache__
+.ipynb_checkpoints
+data
 trial2.ipynb
 trial1.ipynb
 trial.ipynb
-llama-index.ipynb
+tllama-index.ipynb
