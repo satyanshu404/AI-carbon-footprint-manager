@@ -61,7 +61,3 @@ def google_search(query:str,
     query_string_cleaned = clean_file_name(query)
     df = pd.json_normalize(items)
     df.to_csv("{0}/Search_resutls_{1}.csv".format(Constants.GOOGLE_SEARCH_RESULTS_PATH, query_string_cleaned), index=False)
-
-
-if __name__ == "__main__":
-    google_search("How to calculate carbon footprints", 1)
