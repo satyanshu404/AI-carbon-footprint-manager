@@ -22,12 +22,12 @@ def get_react_prompt():
     # Get the react prompt template
     return """Answer the following User query as best you can. You have access to the following tools:
 
-{}
+{0}
 Think step by step and you can use the following format:
 
 Question: the input question you must answer
 Thought: you should always think about what to do
-Action: the action to take, should be one of [{}]
+Action: the action to take, should be one of [{1}]
 Action Input: the input to the action 
 Observation: the result of the action
 ... (this Thought/Action/Action Input/Observation can repeat N times)
