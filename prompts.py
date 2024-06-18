@@ -42,7 +42,7 @@ The user will provide a specific query related to carbon footprints of products.
 
 Detailed Steps:
 1. The user will provide a specific query related to the carbon footprints of products.
-2. Construct a data model in the form of a JSON object. This model must comprehensively represent the carbon footprints of the specified query, including any pertinent metrics, sources, and calculations.
+2. Construct a data model in the form of a JSON object. This model must comprehensively represent the carbon footprints of the specified query, it should be in detailed form.
 3. Ensure Accuracy and Completeness: Ensure that the data present in the data model must be related to the given query.
 At last just give response only in json format, only one Custom JSON object about the given query.
 """
