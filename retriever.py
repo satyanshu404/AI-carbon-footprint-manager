@@ -5,7 +5,7 @@ import requests
 from openai import OpenAI
 from dotenv import load_dotenv
 from constants import Constants
-import prompts
+import prompts.prompts as prompts
 import streamlit as st
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings

@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI
 from tools.get_related_docs import reterive_chunks
 from tools.create_corpus import create_json_summary
 from tools.get_all_files_of_directory import files_in_directory
-from prompts import get_react_prompt, get_search_engine_prompt
+from prompts.prompts import get_react_prompt, get_search_engine_prompt
 from langchain.tools.render import render_text_description
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.utils.function_calling import convert_to_openai_function

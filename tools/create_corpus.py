@@ -8,7 +8,7 @@ import json
 from dotenv import load_dotenv
 from constants import Constants
 from tools.utils import ReadFiles
-import prompts
+import prompts.prompts as prompts
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.tools import tool
