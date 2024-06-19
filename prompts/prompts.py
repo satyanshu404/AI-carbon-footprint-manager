@@ -74,13 +74,14 @@ Give only the summary as the response.
 def calculator_prompt():
     # Get the calculator prompt template
     return """
-Objective: Calculate the carbon emissions of the product(s) based on the given data.
+Objective: To calculate the carbon emissions of the product(s) based on the given data.
 
 Input: An image related to the carbon footprint of the product(s).
 Output: Total carbon emitted by each product mentioned in the image.
 
 Guidelines:
     - Search for data if unknown; do not make assumptions. Data accuracy is crucial.
+    - Always first check for the files that exist in the directory for data if it is not available, then other tools to get the data.
     - Utilize the provided tools for the entire process.
     - Return results only in JSON format, without any additional text.
     - Cross-verify facts and figures from reliable sources if needed.
