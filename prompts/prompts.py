@@ -70,3 +70,21 @@ JSON Object: {json_object}
 
 Give only the summary as the response.
  """)
+
+def calculator_prompt():
+    # Get the calculator prompt template
+    return """
+Objective: Calculate the carbon emissions of the product(s) based on the given data.
+
+Input: An image related to the carbon footprint of the product(s).
+Output: Total carbon emitted by each product mentioned in the image.
+
+Guidelines:
+    - Search for data if unknown; do not make assumptions. Data accuracy is crucial.
+    - Utilize the provided tools for the entire process.
+    - Return results only in JSON format, without any additional text.
+    - Cross-verify facts and figures from reliable sources if needed.
+    - Do not infer or add any information that is not explicitly stated or provided.
+    - If the data in the image is unclear or ambiguous, search for the data to make a calculation.
+    - Include references or links to sources used for verification in the JSON output, if applicable.
+"""
