@@ -42,7 +42,3 @@ def create_json_summary(file_paths: list[str], save_dir_path: str) -> str:
     except Exception as e:
         return f"Error in creating summaries: {e}"
     
-
-if __name__ == "__main__":
-    create_json_summary.invoke({"file_paths": ['data/data_model/data_model.json'], "save_dir_path": 'data/data_model/test.txt'})
-    
