@@ -11,4 +11,4 @@ pdfplumber
 python-docx
 PyPDF2
 pillow
-
+groq
