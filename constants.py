@@ -17,3 +17,22 @@ class Constants:
     SIMILARITY_CUTOFF: float = 0.7
     GOOGLE_SEARCH_URL: str = "https://www.googleapis.com/customsearch/v1"
     GOOGLE_SEARCH_RESULTS_PATH: str = "data/google_search_results"
+
+@dataclass
+class GoogleSearchConstants:
+    GOOGLE_SEARCH_URL: str = "https://www.googleapis.com/customsearch/v1"
+    GOOGLE_SEARCH_RESULTS_PATH: str = "data/google_search_results"
+    NUMBEROFSEARCHS: int = 5
+
+
+@dataclass
+class SaveDirectoryConstants:
+    CALCULATOR_IMAGE_PATH: str = "images/saved_image.png"
+
+@dataclass
+class GroqModelConstants:
+    MODEL_NAME: str = "llama3-70b-8192"
+
+@dataclass
+class CodeExecuterConstants:
+    BASEFILEPATH: str = "data/code_executer"
