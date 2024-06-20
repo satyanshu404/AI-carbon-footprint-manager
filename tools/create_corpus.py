@@ -24,7 +24,8 @@ def create_json_summary(file_paths: list[str], save_dir_path: str) -> str:
     try:
         print("Creating summaries...")
         documents = []
-        documents.extend([ReadFiles(file_path).read_json() for file_path in file_paths])
+        read_files = ReadFiles()
+        documents.extend([read_files.read_json(file_path) for file_path in file_paths])
         llm = ChatOpenAI(model=Constants.MODEL_NAME, temperature=Constants.TEMPERATURE)
         prompt_template = prompts.get_json_summary_prompt_template()
         output_parser = StrOutputParser()
