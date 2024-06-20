@@ -23,7 +23,8 @@ def reterive_chunks(query:str, file_paths: list[str]) -> list[str] | str:
     try:
         print("Calling reterive_chunks...")
         print("Retrieving chunks...")
-        documents = [Document(text=ReadFiles(file_path).read_file()) for file_path in file_paths]
+        RF = ReadFiles()
+        documents = [Document(text=RF.read_file(file_path)) for file_path in file_paths]
         index = VectorStoreIndex.from_documents(documents)
         retriever = VectorIndexRetriever(
                     index=index,
