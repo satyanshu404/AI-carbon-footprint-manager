@@ -24,7 +24,6 @@ from llama_index.core.postprocessor import SimilarityPostprocessor
 
 
 load_dotenv()
-os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
 
 def call_gpt(messages: list[dict[str, str]], 
              functions:list[dict] = None, 
