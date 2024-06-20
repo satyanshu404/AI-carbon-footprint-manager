@@ -23,7 +23,7 @@ def get_react_prompt():
     return """Answer the following User query as best you can. You have access to the following tools:
 
 {0}
-Think step by step and you can use the following format:
+First think step by step then act.
 
 Question: the input question you must answer
 Thought: you should always think about what to do
@@ -71,17 +71,19 @@ JSON Object: {json_object}
 Give only the summary as the response.
  """)
 
-def calculator_prompt():
+def get_calculator_prompt():
     # Get the calculator prompt template
     return """
 Objective: To calculate the carbon emissions of the product(s) based on the given data.
 
-Input: An image related to the carbon footprint of the product(s).
+Input: An image path
+{0}.
 Output: Total carbon emitted by each product mentioned in the image.
 
 Guidelines:
+    - Restrict yourself to the calculation of carbon emissions of the products mentioned in the image content only, noting else, If the content is not useful for the calculation skip it and search again.
     - Search for data if unknown; do not make assumptions. Data accuracy is crucial.
-    - Always first check for the files that exist in the directory for data if it is not available, then other tools to get the data.
+    - Always first check if the files exists in the directory or not for data, if it is not available, then use tools to get the data.
     - Utilize the provided tools for the entire process.
     - Return results only in JSON format, without any additional text.
     - Cross-verify facts and figures from reliable sources if needed.
