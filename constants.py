@@ -18,7 +18,6 @@ class GoogleSearchConstants:
     GOOGLE_SEARCH_RESULTS_PATH: str = "data/google_search_results"
     NUMBEROFSEARCHS: int = 5
 
-
 @dataclass
 class SaveDirectoryConstants:
     CALCULATOR_IMAGE_PATH: str = "images/saved_image.png"
@@ -41,3 +40,7 @@ class RetrieverConstants:
 class WebScraperConstants:
     SCRAPER_FILE_LOCATION: str = "data/scraper_data"
     USERAGENT: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+
+@dataclass
+class SearchEngineConstants:
+    FILE_PATH: str = "templates\json_custom_output_schema_simple.json"
