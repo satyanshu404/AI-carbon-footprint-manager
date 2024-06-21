@@ -35,7 +35,7 @@ load_dotenv()
 # 2. tools: [google_search, get_file_directory, reterive_chunks]
 # 3. call agent
 
-class CarbonFootprintCalculator:
+class CarbonFootprintCalculatorAgent:
     def __init__(self):
         self.tools = [files_in_directory, reterive_chunks, tools.get_image_content, tools.read_files, tools.google_search, tools.code_generator_and_executer]
         self.allowed_file_types = ["jpg", "jpeg", "png"]
@@ -106,7 +106,7 @@ class CarbonFootprintCalculator:
 
 
 if __name__ == "__main__":
-    calculator = CarbonFootprintCalculator()
+    calculator = CarbonFootprintCalculatorAgent()
     calculator.invoke_agent()
     
     # print(calculator.get_prompt(["google_search", "get_file_directory", "reterive_chunks"], "Google Search, Get File Directory, Reterive Chunks"))
