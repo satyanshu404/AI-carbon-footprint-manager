@@ -11,12 +11,6 @@ class Constants:
     TEMPERATURE: float = 1.0
     CREATIVE_TEMPERATURE: float = 1.5
     FACTUAL_TEMPERATURE: float = 0.1
-    TOOL_SPECIFICATION_JSON_PATH: str = "tool_specs.json"
-    RETRIEVER_FILE_LOCAITON:str = "data/reterival_data"
-    SIMILARITY_TOP_K: int = 3
-    SIMILARITY_CUTOFF: float = 0.7
-    GOOGLE_SEARCH_URL: str = "https://www.googleapis.com/customsearch/v1"
-    GOOGLE_SEARCH_RESULTS_PATH: str = "data/google_search_results"
 
 @dataclass
 class GoogleSearchConstants:
@@ -36,3 +30,14 @@ class GroqModelConstants:
 @dataclass
 class CodeExecuterConstants:
     BASEFILEPATH: str = "data/code_executer"
+
+@dataclass
+class RetrieverConstants:
+    RETRIEVER_FILE_LOCAITON:str = "data/reterival_data"
+    SIMILARITY_TOP_K: int = 3
+    SIMILARITY_CUTOFF: float = 0.7
+
+@dataclass
+class WebScraperConstants:
+    SCRAPER_FILE_LOCATION: str = "data/scraper_data"
+    USERAGENT: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
