@@ -5,7 +5,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
-from constants import Constants
+import constants
 from tools.utils import ReadFiles
 from langchain.agents import tool
 from llama_index.core import VectorStoreIndex, get_response_synthesizer
@@ -21,28 +21,26 @@ load_dotenv()
 def reterive_chunks(query:str, file_paths: list[str]) -> list[str] | str:
     '''Retrive the relevant chunks from the files at the based on the query and returns the chunks as a list of strings which are important to the query.'''
     try:
-        print("Calling reterive_chunks...")
         print("Retrieving chunks...")
         RF = ReadFiles()
         documents = [Document(text=RF.read_file(file_path)) for file_path in file_paths]
         index = VectorStoreIndex.from_documents(documents)
         retriever = VectorIndexRetriever(
                     index=index,
-                    similarity_top_k=Constants.SIMILARITY_TOP_K,
+                    similarity_top_k=constants.RetrieverConstants.SIMILARITY_TOP_K,
                 )
 
         response_synthesizer = get_response_synthesizer()
 
         # assemble query engine
-        print("Calling query engine...")
         query_engine = RetrieverQueryEngine(
             retriever=retriever,
             response_synthesizer=response_synthesizer,
-            node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=Constants.SIMILARITY_CUTOFF)],
+            node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=constants.RetrieverConstants.SIMILARITY_CUTOFF)],
         )
         
         response = query_engine.query(query)
         print(f"Got {len(response.source_nodes)} chunks.")
-        return [doc.text for doc in response.source_nodes]
+        return response, [doc.text for doc in response.source_nodes]
     except Exception as e:
         return f"Got an error while reteriving the chunks: {e}"
