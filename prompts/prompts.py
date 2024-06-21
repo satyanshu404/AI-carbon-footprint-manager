@@ -1,6 +1,5 @@
 from langchain_core.prompts import PromptTemplate
 
-
 def general_instruction():
     instruction:str = '''
     You are an advanced intelligent assistant with expertise in computer science and sustainability development. 
@@ -23,7 +22,7 @@ def get_react_prompt():
     return """Answer the following User query as best you can. You have access to the following tools:
 
 {0}
-First think step by step then act.
+First Unserstand the question, it if complex break it down and think step by step then act.
 
 Question: the input question you must answer
 Thought: you should always think about what to do
@@ -38,15 +37,23 @@ Final Answer: the final answer to the original input question
 def get_search_engine_prompt():
     # Get the search engine prompt template
     return """
-The user will provide a specific query related to carbon footprints of products. Your goal is to create a comprehensive data model in the form of a JSON object from the gathered data.
+Objective: The user will provide a query, in most cases it will be company name, and your task is to collect the products of the company and their carbon footprints.
+Input: Name of the company (mostly, not in all cases)
+Output: To create list of object containing the products of the company and their carbon footprints in full details in the given JSON template.
+Json Object template: 
+[{json_output_schema}]
+The response should be in this JSON template only. 
 
-Detailed Steps:
-1. The user will provide a specific query related to the carbon footprints of products.
-2. Construct a data model in the form of a JSON object. This model must comprehensively represent the carbon footprints of the specified query, it should be in detailed form.
-3. Ensure Accuracy and Completeness: Ensure that the data present in the data model must be related to the given query.
-At last just give response only in json format, only one Custom JSON object about the given query.
+Guidelines:
+    - Understand the problem carefully and restrict yourself towards the collection and creation of data model only.
+    - Focus only the data related to the given query, do not include any irrelevant data.
+    - You are also provided with the search tool, use it if necessary, however first check for the data in the directory.
+    - If the data is not available in the directory, then use the search tool to get the data.
+    - Ensure Accuracy and Completeness: Ensure that the data present in the data model must be related to the given query.
+    - Do not make any assumptions, always search for the data if it is not available, data accuracy is crucial.
+    - Do mention the references or links to the sources used for verification in the JSON output.
+    - At last just give output in the JSON format only, without any additional text.
 """
-
 
 def get_json_summary_prompt_template():
     # Get the summary prompt template
@@ -74,14 +81,21 @@ Give only the summary as the response.
 def get_calculator_prompt():
     # Get the calculator prompt template
     return """
-Objective: To calculate the carbon emissions of the product(s) based on the given data.
+Objective: To calculate the carbon emissions of the product(s). 
+For that Always think and act, if the data is not available then search for the data.
 
 Input: An image path
 {0}.
-Output: Total carbon emitted by each product mentioned in the image.
+Output: Total carbon emitted by each product (Numerical Value) with actual unit.
+
+Calculations for the carbon emission may be difficilt, so always first think and then act.
+If needed break down the task into subtasks and act accordingly.
+The information about the product carbon footprint may not be present, so break down the task, search about from which material product is made, then search for its carbon footprint.
+You are also provided with the a tool which can write code and execute it, so call that tool if you need to do mathematical calulations. Beacuase data accuracy is crucial.
+
 
 Guidelines:
-    - Restrict yourself to the calculation of carbon emissions of the products mentioned in the image content only, noting else, If the content is not useful for the calculation skip it and search again.
+    - Restrict yourself to the calculation of carbon emissions of the products only, noting else, If the content is not useful for the calculation skip it and search again.
     - Search for data if unknown; do not make assumptions. Data accuracy is crucial.
     - Always first check if the files exists in the directory or not for data, if it is not available, then use tools to get the data.
     - Utilize the provided tools for the entire process.
@@ -89,5 +103,5 @@ Guidelines:
     - Cross-verify facts and figures from reliable sources if needed.
     - Do not infer or add any information that is not explicitly stated or provided.
     - If the data in the image is unclear or ambiguous, search for the data to make a calculation.
-    - Include references or links to sources used for verification in the JSON output, if applicable.
+    - Include references or links to sources used for verification in the JSON output.
 """
