@@ -5,7 +5,6 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import re
-import logging
 import pandas as pd
 import PyPDF2
 import docx
@@ -17,15 +16,20 @@ import mimetypes
 import requests
 import constants
 import subprocess
-import os
 import importlib.util
+import constants 
 from groq import Groq
+from langchain.agents import tool
+from llama_index.core import VectorStoreIndex, get_response_synthesizer
+from llama_index.core import Document
+from llama_index.core.retrievers import VectorIndexRetriever
+from llama_index.core.query_engine import RetrieverQueryEngine
+from llama_index.core.postprocessor import SimilarityPostprocessor
+
 from dotenv import load_dotenv
 
 
 load_dotenv()
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 class ReadFiles:
@@ -39,6 +43,7 @@ class ReadFiles:
     
     def read_file(self, file_path:str) -> str:
         '''Reads the content of a file based on its extension and returns the content as a string or a dataframe.'''
+        print(self.get_extension(file_path))
         if self.get_extension(file_path) == '.txt':
             return self.read_txt(file_path)
         elif self.get_extension(file_path) == '.pdf':
@@ -189,7 +194,6 @@ class GoogleSearch:
             # df.to_csv(save_file_path, index=False)
             return search_urls
         except Exception as e:
-            logging.log(logging.ERROR, f"An error occurred during search: {e}")
             return f'''Error occured during search: {e}'''
 
 class GroqModel:
@@ -197,8 +201,6 @@ class GroqModel:
     def __init__(self, model_name:str = constants.GroqModelConstants.MODEL_NAME):
         self.client = Groq()
         self.model = model_name
-        if self.model == constants.GroqModelConstants.MODEL_NAME:
-            logging.info(f"By default model is set to {self.model}")
     def get_completion(self, messages, **kwargs) -> str:
         '''Get completion from the model'''
         chat_completion = self.client.chat.completions.create(
@@ -211,7 +213,7 @@ class GroqModel:
        
 class CodeExecuter:
     def __init__(self):
-        logging.log(logging.INFO, "CodeExecuter initialized")
+        pass
     
     def generate_code(self, prompt:str, filename:str, function_name:str):
         '''Generate code from the messages'''
@@ -241,5 +243,78 @@ class CodeExecuter:
             result = generated_function(*args)
             return result
         except Exception as e:
-            logging.log(logging.ERROR, f"An error occurred in Code Executer: {str(e)}") 
             return f"An error occurred while executing the code: {str(e)}"
+        
+class Retriever:
+    def __init__(self):
+        self.RF = ReadFiles()
+
+    def create_documents(self, file_paths: list[str]) -> list[Document]:
+        '''Create the documents from the file paths'''
+        return [Document(text=self.RF.read_file(file_path)) for file_path in file_paths]
+    
+    def create_reteriver(self, documents: list[Document]) -> VectorStoreIndex:
+        '''Create the reteriver'''
+        index = VectorStoreIndex.from_documents(documents)
+        retriever = VectorIndexRetriever(
+                    index=index,
+                    similarity_top_k=constants.RetrieverConstants.SIMILARITY_TOP_K,
+                )
+        return retriever
+    
+    def query_engine(self, query:str, retriever:VectorIndexRetriever) -> RetrieverQueryEngine:
+        '''create the query engine and call the engine for the query'''
+        response_synthesizer = get_response_synthesizer()
+        query_engine = RetrieverQueryEngine(
+            retriever=retriever,
+            response_synthesizer=response_synthesizer,
+            node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=constants.RetrieverConstants.SIMILARITY_CUTOFF)],
+        )
+        response = query_engine.query(query)
+        return response
+
+    def reterive(self, query:str, file_paths: list[str]) -> list[str] | str:
+        '''Retrive the relevant chunks from the files at the based on the query and returns the chunks as a list of strings which are important to the query.'''
+        try:
+            print("Retrieving chunks...")
+            documents = self.create_documents(file_paths)
+            retriever = self.create_reteriver(documents)
+            response = self.query_engine(query, retriever)
+
+            print(f"Got {len(response.source_nodes)} chunks.")
+            return response, [doc.text for doc in response.source_nodes]
+        except Exception as e:
+            return f"Got an error while reteriving the chunks: {e}"
+
+class WebScraper:
+    def __init__(self):
+        self.header = {'User-Agent': constants.WebScraperConstants.USERAGENT}
+
+        if not os.path.exists(constants.WebScraperConstants.SCRAPER_FILE_LOCATION):
+                os.makedirs(constants.WebScraperConstants.SCRAPER_FILE_LOCATION)
+
+    def make_request(self, url:str):
+        '''Make a request to the url'''
+        response = requests.get(url, headers=self.header)
+        return response
+    
+    def scrape(self, url:str, query:str = None) -> tuple[str, list[str]] | str:
+        '''Scrape the content aof the url and return the relevant content based on the query'''
+        try:
+            response = self.make_request(url)
+
+            file_path = os.path.join(constants.WebScraperConstants.SCRAPER_FILE_LOCATION, url.split('/')[-1])
+
+            if not file_path.endswith('.pdf'):
+                file_path += '.html'
+
+            with open(file_path, 'wb') as file:
+                file.write(response.content)
+            if query:
+                return Retriever().reterive(query, [file_path])
+            
+            return ReadFiles().read_file(file_path)
+        except Exception as e:
+            return f"An error occurred while scraping the content: {str(e)}"
+
+    
