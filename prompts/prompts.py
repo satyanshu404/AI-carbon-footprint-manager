@@ -22,7 +22,8 @@ def get_react_prompt():
     return """Answer the following User query as best you can. You have access to the following tools:
 
 {0}
-First Unserstand the question, it if complex break it down and think step by step then act.
+First Understand the question, break it down and think step by step then act.
+First create multiple plans, then select one optimal plan, verify the plan, then act accordingly.
 
 Question: the input question you must answer
 Thought: you should always think about what to do
@@ -37,22 +38,25 @@ Final Answer: the final answer to the original input question
 def get_search_engine_prompt():
     # Get the search engine prompt template
     return """
-Objective: The user will provide a query, in most cases it will be company name, and your task is to collect the products of the company and their carbon footprints.
-Input: Name of the company (mostly, not in all cases)
-Output: To create list of object containing the products of the company and their carbon footprints in full details in the given JSON template.
-Json Object template: 
-[{json_output_schema}]
+Objective: To Collect and present the products of a specified company along with their carbon footprints in a JSON format.
+Input: Company name (mostly, not always).
+Output: A JSON object containing the company's most important products and their carbon footprints in full details using the provided template.
+{0}
 The response should be in this JSON template only. 
 
+Ideas:
+1. Search for the company's official website and look for the products and their carbon footprints.
+2. Search for the company's sustainability reports or other relevant documents.
+3. First search for the companies most important products, then search for their carbon footprints.
+4. Search with the product names in directory or search tool for the carbon footprints.
+
 Guidelines:
-    - Understand the problem carefully and restrict yourself towards the collection and creation of data model only.
-    - Focus only the data related to the given query, do not include any irrelevant data.
-    - You are also provided with the search tool, use it if necessary, however first check for the data in the directory.
-    - If the data is not available in the directory, then use the search tool to get the data.
-    - Ensure Accuracy and Completeness: Ensure that the data present in the data model must be related to the given query.
-    - Do not make any assumptions, always search for the data if it is not available, data accuracy is crucial.
-    - Do mention the references or links to the sources used for verification in the JSON output.
-    - At last just give output in the JSON format only, without any additional text.
+Accuracy is Crucial: Do not fabricate data. Ensure the information is accurate and reliable.
+Understand the Problem: Focus on collecting and creating the data model specific to the query. Avoid including irrelevant data.
+Use Provided Tools: Check the directory first. If data isn't available, use the search tool.
+Extensive Search: For quality data/informations, do extensive search with detailded queries.
+No Assumptions: Always search for data if it's not available. Do not make assumptions.
+Final Output: Provide the response in the specified JSON format only, do not include any additional text.
 """
 
 def get_json_summary_prompt_template():
