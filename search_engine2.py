@@ -29,14 +29,14 @@ class SearchEngineAgent:
     def __init__(self):
         self.tools = [files_in_directory, create_json_summary, tools.google_search, tools.reterive_data]
 
-        self.json_output_schema:str = utils.ReadFiles().read_json(constants.SearchEngineConstants.FILE_PATH)
+        self.output_schema:str = utils.ReadFiles().read_txt(constants.SearchEngineConstants.FILE_PATH)
     
     def get_prompt(self, tools_list: str, tool_names: str):
         prompt = ChatPromptTemplate.from_messages([
             ("system", get_react_prompt().format(tools_list, tool_names)),
-            ("user", get_search_engine_prompt().format(json_output_schema=self.json_output_schema)),
+            ("user", get_search_engine_prompt().format(self.output_schema)),
             MessagesPlaceholder(variable_name="chat_history"),
-            # ("user", "Company Name: {input}"),
+            ("user", "Company Name: {input}"),
             MessagesPlaceholder(variable_name="agent_scratchpad")
         ])
         return prompt
@@ -84,7 +84,7 @@ class SearchEngineAgent:
             if st.button("Run Agent"):
                 with st.spinner("Processing..."):
                     response = agent_executor.invoke(
-                        {input: query}, 
+                        {"input": query}, 
                         callback_handler=st_callback)
                     if response['output']:
                         st.write(response['output'])
