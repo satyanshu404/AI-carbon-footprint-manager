@@ -1,0 +1,24 @@
+dict(
+    'company_name': '<string>, the name of the company',
+    'industry': '<string>, the industry sector the company operates in',
+    'products': list(
+        dict(
+            'product_id': '<string>, a unique identifier for the product',
+            'product_name: '<string>, the name of the product',
+            'category': '<string>, the category or type of the product',
+            'carbon_footprint': dict(
+                'total_carbon_emissions': '<number>, the total carbon emissions associated with the product, typically measured in units like kg CO2e',
+                'unit': '<string>, the unit of measurement for the total carbon emissions (e.g., kg CO2e)',
+                'scope_1_emissions': '<number>, direct emissions from owned or controlled sources',
+                'scope_2_emissions': '<number>, indirect emissions from the generation of purchased energy',
+                'scope_3_emissions': '<number>, all other indirect emissions that occur in the value chain of the company, else Null'
+            ),
+            'reporting_period': dict(
+                'start_date': '<date>, the start date of the reporting period',
+                'end_date': '<date>, the end date of the reporting period'
+            ),
+            'reference': '<list of string>, a list of URLs to reference sources for the data'
+        )
+
+    )
+)
