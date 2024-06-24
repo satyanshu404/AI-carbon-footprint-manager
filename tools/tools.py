@@ -47,16 +47,16 @@ def get_image_content(image_path: str) -> str:
         return f"An error occurred while reading the image content: {str(e)}"
     
 @tool
-def code_generator_and_executer(prompts:str, function_name: str, *args):
+def code_generator_and_executer(prompts:str, function_name: str, **kwargs):
     '''Create and Executes the code provided in the prompts and returns the result.
     Arguments:
     prompts: str - A detailed prompt with informations and insturctions for generating the code.
     function_name: str - The name of the function to execute.
-    *args: Any - The arguments to pass to the function for calculations.
+    **kwargs - The necessary arguments to pass to the function.
     '''
     try:
         logging.log(logging.INFO, "Executing the code...")
-        return utils.CodeExecuter().execute_code(prompts, function_name, *args)
+        return utils.CodeExecuter().execute_code(prompts, function_name, **kwargs)
     except Exception as e:
         logging.log(logging.ERROR, f"An error occurred while executing the code: {str(e)}")
         return f"An error occurred while executing the code: {str(e)}"

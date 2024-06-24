@@ -234,13 +234,13 @@ class CodeExecuter:
         spec.loader.exec_module(module)
         return getattr(module, function_name)
     
-    def execute_code(self, prompt:str, function_name:str, *args):
+    def execute_code(self, prompt:str, function_name:str, **kwargs):
         '''Execute the generated function'''
         try:
             code_filename = f"{constants.CodeExecuterConstants.BASEFILEPATH}/generated_code.py"
             self.generate_code(prompt, code_filename, function_name)
             generated_function = self.load_function_from_file(code_filename, function_name)
-            result = generated_function(*args)
+            result = generated_function(**kwargs)
             return result
         except Exception as e:
             return f"An error occurred while executing the code: {str(e)}"
@@ -303,9 +303,12 @@ class WebScraper:
         try:
             response = self.make_request(url)
 
-            file_path = os.path.join(constants.WebScraperConstants.SCRAPER_FILE_LOCATION, url.split('/')[-1])
+            if len(url.split('/')[-1]) == 0:                
+                file_path = os.path.join(constants.WebScraperConstants.SCRAPER_FILE_LOCATION, url.split('/')[-2])
+            else:
+                file_path = os.path.join(constants.WebScraperConstants.SCRAPER_FILE_LOCATION, url.split('/')[-1])
 
-            if not file_path.endswith('.pdf'):
+            if not file_path.endswith(('.pdf','.xlsx','.xls','.csv','.docx','.txt')):
                 file_path += '.html'
 
             with open(file_path, 'wb') as file:
