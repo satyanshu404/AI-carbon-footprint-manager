@@ -34,7 +34,7 @@ class CodeExecuterConstants:
 class RetrieverConstants:
     RETRIEVER_FILE_LOCAITON:str = "data/reterival_data"
     SIMILARITY_TOP_K: int = 3
-    SIMILARITY_CUTOFF: float = 0.7
+    SIMILARITY_CUTOFF: float = 0.8
 
 @dataclass
 class WebScraperConstants:
@@ -43,4 +43,4 @@ class WebScraperConstants:
 
 @dataclass
 class SearchEngineConstants:
-    FILE_PATH: str = "templates\json_custom_output_schema_simple.json"
+    FILE_PATH: str = "templates\custom_output_schema_simple.txt"
