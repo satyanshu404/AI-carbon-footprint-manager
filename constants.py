@@ -23,6 +23,10 @@ class SaveDirectoryConstants:
     CALCULATOR_IMAGE_PATH: str = "images/saved_image.png"
 
 @dataclass
+class FormatJsonConstants:
+    SAVE_DIRECTORY: str = "templates/{0}.txt"
+
+@dataclass
 class GroqModelConstants:
     MODEL_NAME: str = "llama3-70b-8192"
 
@@ -43,4 +47,17 @@ class WebScraperConstants:
 
 @dataclass
 class SearchEngineConstants:
-    FILE_PATH: str = "templates\custom_output_schema_simple.txt"
+    FILE_PATH: str = "templates/custom_output_schema_simple.txt"
+    MAX_TOKEN_LIMIT: int = 200_000
+
+@dataclass
+class DataModelGeneratorConstants:
+    DATA_MODEL_PATH: dict = field(default_factory=lambda: {
+        'pact': 'templates/pact_data_model.txt',
+    })
+    REPO_PATH: str = "data/tmp_reterival_data"
+
+@dataclass
+class TextSplitterConstants:
+    CHUNK_SIZE: int = 5000
+    CHUNK_OVERLAP: int = 1000
