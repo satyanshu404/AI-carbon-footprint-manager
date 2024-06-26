@@ -1,0 +1,83 @@
+list(
+    dict(
+        'id': '<string>, a unique identifier for the item, if not present provide null',
+        'specVersion': '<string>, the version of the specification that this item adheres to, if not present provide null',
+        'version': '<number>, a numeric version of this item, if not present provide null',
+        'created': '<date>, a timestamp indicating when the item was created, if not present provide null',
+        'status': '<string>, the current status of the item (e.g., active, inactive, draft), if not present provide null',
+        'validityPeriodStart': '<date>, the start date of the period during which the item is valid, if not present provide null',
+        'validityPeriodEnd': '<date>, the end date of the period during which the item is valid, if not present provide null',
+        'companyName': '<string>, the name of the company associated with the item, if not present provide null',
+        'companyIds': list(
+            '<string>, an unique identifier for the company, if not present provide null'
+        ),
+        'productDescription': '<string>, a description of the product.',
+        'productIds': list(
+            '<string>, an identifier for the product, if not present provide null'
+        ),
+        'productCategoryCpc': '<string>, the category code for the product (e.g., CPC code), if not present provide null',
+        'productNameCompany': '<string>, the product name as given by the company, if not present provide null',
+        'pcf': dict(
+            'declaredUnit': '<string>, the unit in which the product\'s environmental data is declared, if not present provide null',
+            'unitaryProductAmount': '<number>, the amount of the product in the declared unit, if not present provide null',
+            'pCfExcludingBiogenic': '<number>, the product carbon footprint excluding biogenic emissions, if not present provide null',
+            'pCfIncludingBiogenic': '<number>, the product carbon footprint including biogenic emissions, if not present provide null',
+            'fossilGhgEmissions': '<number>, the amount of fossil greenhouse gas emissions, if not present provide null',
+            'fossilCarbonContent': '<number>, the amount of fossil carbon content, if not present provide null',
+            'biogenicCarbonContent': '<number>, the amount of biogenic carbon content, if not present provide null',
+            'dLucGhgEmissions': '<number>, the amount of direct land use change greenhouse gas emissions, if not present provide null',
+            'landManagementGhgEmissions': '<number>, the amount of greenhouse gas emissions from land management, if not present provide null',
+            'otherBiogenicGhgEmissions': '<number>, the amount of other biogenic greenhouse gas emissions, if not present provide null',
+            'iLucGhgEmissions': '<number>, the amount of indirect land use change greenhouse gas emissions, if not present provide null',
+            'biogenicCarbonWithdrawal': '<number>, the amount of biogenic carbon withdrawal, if not present provide null',
+            'aircraftGhgEmissions': '<number>, the amount of greenhouse gas emissions from aircraft, if not present provide null',
+            'characterizationFactors': '<string>, characterization factors used in the assessment, if not present provide null',
+            'ipccCharacterizationFactorsSources': list(
+                '<string>, sources of IPCC characterization factors, if not present provide null'
+            ),
+            'crossSectoralStandardsUsed': list(
+                '<string>, cross-sectoral standards used in the assessment, if not present provide null'
+            ),
+            'productOrSectorSpecificRules': list(
+                dict(
+                    'operator': '<string>, the type of operator (e.g., manufacturer, supplier), if not present provide null',
+                    'ruleNames': list(
+                        '<string>, names of the rules applicable to the product or sector, if not present provide null'
+                    ),
+                    'otherOperatorName': '<string>, the name of the operator if not categorized, if not present provide null'
+                )
+            ),
+            'biogenicAccountingMethodology': '<string>, the methodology used for biogenic accounting, if not present provide null',
+            'boundaryProcessesDescription': '<string>, description of the boundary processes considered, if not present provide null',
+            'referencePeriodStart': '<date>, the start date of the reference period, if not present provide null',
+            'referencePeriodEnd': '<date>, the end date of the reference period, if not present provide null',
+            'geographicScope': dict(
+                'geographyRegionOrSubregion': '<string>, the geographic region or subregion covered, if not present provide null'
+            ),
+            'secondaryEmissionFactorSources': list(
+                dict(
+                    'name': '<string>, the name of the secondary emission factor source, if not present provide null',
+                    'version': '<string>, the version of the secondary emission factor source, if not present provide null'
+                )
+            ),
+            'exemptedEmissionsPercent': '<number>, the percentage of emissions that are exempted, if not present provide null',
+            'exemptedEmissionsDescription': '<string>, description of the exempted emissions, if not present provide null',
+            'packagingEmissionsIncluded': '<boolean>, indicates if packaging emissions are included (true/false), if not present provide null',
+            'allocationRulesDescription': '<string>, description of the allocation rules applied, if not present provide null',
+            'uncertaintyAssessmentDescription': '<string>, description of the uncertainty assessment, if not present provide null',
+            'primaryDataShare': '<number>, the percentage of primary data used, if not present provide null',
+            'dqi': dict(
+                'coveragePercent': '<number>, the percentage of coverage in the data quality indicator, if not present provide null',
+                'technologicalDQR': '<number>, the rating for technological data quality, if not present provide null',
+                'temporalDQR': '<number>, the rating for temporal data quality, if not present provide null',
+                'geographicalDQR': '<number>, the rating for geographical data quality, if not present provide null',
+                'completenessDQR': '<number>, the rating for completeness data quality, if not present provide null',
+                'reliabilityDQR': '<number>, the rating for reliability data quality, if not present provide null'
+            ),
+            'assurance': dict(
+                'assured': '<boolean>, indicates if the data is assured (true/false), if not present provide null',
+                'providerName': '<string>, the name of the assurance provider, if not present provide null'
+            )
+        )
+    )
+)
