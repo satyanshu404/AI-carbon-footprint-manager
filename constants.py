@@ -55,6 +55,7 @@ class DataModelGeneratorConstants:
     DATA_MODEL_PATH: dict = field(default_factory=lambda: {
         'pact': 'templates/pact_data_model.txt',
     })
+    DATA_MODEL_LIST: List[str] = field(default_factory=lambda: ['PACT'])
     REPO_PATH: str = "data/tmp_reterival_data"
 
 @dataclass
