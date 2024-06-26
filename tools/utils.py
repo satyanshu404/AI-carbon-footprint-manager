@@ -19,7 +19,9 @@ import subprocess
 import importlib.util
 import constants 
 from groq import Groq
+from prompts import prompts
 from langchain.agents import tool
+from langchain.text_splitter import MarkdownTextSplitter
 from llama_index.core import VectorStoreIndex, get_response_synthesizer
 from llama_index.core import Document
 from llama_index.core.retrievers import VectorIndexRetriever
@@ -30,7 +32,6 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-
 
 class ReadFiles:
     '''Reads the content of a file based on its extension and returns the content as a string or a dataframe.'''
@@ -210,7 +211,26 @@ class GroqModel:
         )
         if chat_completion:
             return chat_completion.choices[0].message.content
-       
+
+class GptModel:
+    '''Gpt model class'''
+    def __init__(self, model_name:str = constants.Constants.MODEL_NAME):
+        self.client = OpenAI()
+        self.model = model_name
+    
+    def create_prompt(self, prompt:str) -> list[dict]:
+        return [{'role': 'system', 'content': prompts.get_system_prompt_for_ai_assistant()},
+                {'role': 'user', 'content': prompt}]
+    
+    def get_completion(self, prompt:str, **kwargs) -> str:
+        '''Get completion from the model'''
+        completion = self.client.chat.completions.create(
+            model=self.model,
+            messages= self.create_prompt(prompt),
+            **kwargs
+        )
+        return completion.choices[0].message.content
+
 class CodeExecuter:
     def __init__(self):
         pass
@@ -320,4 +340,56 @@ class WebScraper:
         except Exception as e:
             return f"An error occurred while scraping the content: {str(e)}"
 
+class FormatJson:
+    '''Format the json file for the langchain agent'''
+    def __init__(self):
+        self.save_dir = constants.FormatJsonConstants.SAVE_DIRECTORY
+
+    def to_string(self, json_string: str) -> str:
+        '''load json as json string'''
+        return json.dumps(json_string, indent=4)
     
+    def format_text(self, text:str) -> str:
+        '''Format the text'''
+        text = text.replace('{', 'dict(')
+        text = text.replace('}', ')')
+        text = text.replace('[', 'list(')
+        text = text.replace(']', ')')
+        return text
+    
+    def save_file(self, text:str, file_name:str) -> str:
+        '''Save the file'''
+        file_path = self.save_dir.format(file_name)
+        with open(file_path, 'w') as file:
+            file.write(text)
+
+    def format_json_file(self, file_path:str, file_name: str) -> str:
+        '''Format the json file for the langchain agent
+        Description:
+            - all the curly braces {} are replaced with 'dict()'
+            - all the square brackets [] are replaced with 'list()'
+        Note: Having {} in json file cause conflict with the langchain agent's input
+        '''
+        try:
+            json_string = json.load(open(file_path))
+            text = self.to_string(json_string)
+            formated_text = self.format_text(text)
+
+            self.save_file(formated_text, file_name)
+            
+            return "file has been saved to: " + file_path
+        except Exception as e:
+            return f"An error occurred while formatting the json file: {str(e)}"
+        
+class TextSplitter:
+    '''Split the text into chunks using the markdown text splitter'''
+    def __init__(self):
+        self.chunk_size = constants.TextSplitterConstants.CHUNK_SIZE
+        self.chunk_overlap = constants.TextSplitterConstants.CHUNK_OVERLAP
+    
+    def split_text(self, document: str) -> list[str]:
+        '''Split the text into chunks using the markdown text splitter'''
+        chunks = []
+        splitter = MarkdownTextSplitter(chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
+        chunks = splitter.split_text(document)
+        return chunks
