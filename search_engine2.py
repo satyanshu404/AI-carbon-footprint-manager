@@ -59,7 +59,7 @@ class SearchEngineAgent:
         chain = prompt | llm | output_parser
         agent_chain = RunnablePassthrough.assign(agent_scratchpad= lambda x: format_to_openai_functions(x["intermediate_steps"])) | chain
         memory = ConversationBufferMemory(return_messages=True,memory_key="chat_history")
-        
+
         agent_executor = AgentExecutor(agent=agent_chain, tools=self.tools, verbose=True, memory=memory, return_intermediate_steps=True)
         
         return agent_executor
