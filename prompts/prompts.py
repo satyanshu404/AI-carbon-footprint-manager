@@ -17,6 +17,14 @@ def general_instruction():
     
     return instruction
 
+def get_system_prompt_for_ai_assistant():
+    # Get the AI assistant prompt template
+    return """
+You are an advanced intelligent assistant with expertise in computer science and sustainability development. 
+Your capabilities include, but are not limited to, critical thinking, action-taking, providing feedback, processing inputs, coding, and step-by-step problem-solving. 
+You understand the task provided and give the response accordingly.
+"""
+
 def get_react_prompt():
     # Get the react prompt template
     return """Answer the following User query as best you can. You have access to the following tools:
@@ -109,3 +117,51 @@ Guidelines:
     - If the data in the image is unclear or ambiguous, search for the data to make a calculation.
     - Include references or links to sources used for verification in the JSON output.
 """
+
+def get_data_model_generator_prompt():
+    # Get the data model generator prompt template
+    return """
+Create a data model for products responsible for carbon emissions or greenhouse gases based on the company's environmental data.
+
+Input:
+- Company's environmental data file path
+- Data model format: {0}
+
+Steps:
+1. Extract important products responsible for carbon emissions/greenhouse gases from the data.
+2. Create a data model focusing on each product's carbon emissions/greenhouse gases dat.
+
+Instructions:
+1. Use the AI assistant tool for help. Provide context and detailed information in queries.
+2. Extract relevant products and their carbon emissions/greenhouse gases data.
+3. Create a list of JSON objects, each representing a product's carbon emissions/greenhouse gases data.
+4. Follow the provided data model format for each object.
+5. Include all fields from the original data model, even if values are missing.
+6. Use multiple detailed queries to the AI tool for better data retrieval.
+
+Output:
+- Finally return all JSON objects in list which containing important products' carbon emmision/greenhouse gases data.
+- Each object should be in dictionary format as per the provided data model.
+- Provide the response in strict JSON format, without additional text.
+"""
+
+def get_prompt_for_getting_product():
+    # Get the prompt for getting the product
+    return '''
+Extract product names from the given document where carbon emmsions or emission data is explicitly provided. Return these as a Python list.
+Input:
+Data Model: {0}
+Document: {1}
+
+Context:
+The document contains information about various products and their associated carbon emmisons or green house gases. 
+This aim is to facilitate decarbonization through a global network for exchanging verified product carbon emissions data.
+
+Instructions:
+Read the document carefully.
+Identify products with explicit carbon footprint or emission data.
+Return Python list of these product names only.
+If no such products are found, return an empty list.
+Do not include non-product names (e.g., cities, methods) in the list.
+Do not give additional text other than python list.
+'''
