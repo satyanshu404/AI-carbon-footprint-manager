@@ -30,15 +30,10 @@ from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 
 load_dotenv()
 
-# steps:
-# 1. get the image and load it for gpt 
-# 2. tools: [google_search, get_file_directory, reterive_chunks]
-# 3. call agent
-
 class CarbonFootprintCalculatorAgent:
     def __init__(self):
         self.tools = [files_in_directory, reterive_chunks, tools.get_image_content, tools.read_files, tools.google_search, tools.code_generator_and_executer]
-        self.allowed_file_types = ["jpg", "jpeg", "png"]
+        self.allowed_file_types = ["jpg", "jpeg", "png", "webp"]
 
     def get_prompt(self, tools_list: str, tool_names: str):
         prompt = ChatPromptTemplate.from_messages([
@@ -108,5 +103,3 @@ class CarbonFootprintCalculatorAgent:
 if __name__ == "__main__":
     calculator = CarbonFootprintCalculatorAgent()
     calculator.invoke_agent()
-    
-    # print(calculator.get_prompt(["google_search", "get_file_directory", "reterive_chunks"], "Google Search, Get File Directory, Reterive Chunks"))
