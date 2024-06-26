@@ -5,7 +5,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
-import utils as utils
+import tools.utils as utils
 import constants
 from prompts import prompts
 from langchain.agents import tool
