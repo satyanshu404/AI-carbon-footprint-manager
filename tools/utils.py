@@ -5,6 +5,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import re
+import ast
 import pandas as pd
 import PyPDF2
 import docx
@@ -393,3 +394,25 @@ class TextSplitter:
         splitter = MarkdownTextSplitter(chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
         chunks = splitter.split_text(document)
         return chunks
+    
+class FormatResponse:
+    '''Format the response of the llm calls'''
+    def __init__(self):
+        pass
+    
+    def format_response(self, response:str, pattern:str) -> str:
+        """
+        Extract the json/python code from the response.
+        Args:
+        - response (str): Input text containing the response surrounded by backticks and pattern.
+        - pattern (str): The pattern (e.g., "python") to match and remove along with the backticks.
+        """
+        # Construct regex pattern to match backticks and the specified pattern
+        pattern_regex = rf'^```(?:{pattern})?\n|\n```$'
+        
+        # Remove surrounding ``` and the specified pattern
+        cleaned_text = re.sub(pattern_regex, '', response, flags=re.MULTILINE)
+        
+       
+        python_list = ast.literal_eval(cleaned_text.strip())
+        return python_list
