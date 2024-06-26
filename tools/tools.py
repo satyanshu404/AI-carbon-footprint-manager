@@ -5,8 +5,9 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
-import tools.utils as utils
+import utils as utils
 import constants
+from prompts import prompts
 from langchain.agents import tool
 import logging
 
@@ -70,3 +71,40 @@ def reterive_data(query: str, file_paths: list[str]) -> str:
     except Exception as e:
         logging.log(logging.ERROR, f"An error occurred while retrieving the data: {str(e)}")
         return f"An error occurred while retrieving the data: {str(e)}"
+
+@tool
+def ai_assistant(prompt:str) -> str:
+    '''Executes the AI assistant and returns the response.'''
+    try:
+        logging.log(logging.INFO, "Executing the AI assistant...")
+        return utils.GptModel().get_completion(prompt)
+    except Exception as e:
+        logging.log(logging.ERROR, f"An error occurred from ai assistant side: {str(e)}")
+        return f"An error occurred from ai assistant side: {str(e)}"
+    
+@tool
+def get_product_names(data_model_type:str, file_paths:list[str]) -> str:
+    '''Returns the list of product names.'''
+    try:
+        logging.log(logging.INFO, "Getting product names...")
+
+        read_files = utils.ReadFiles()
+        text_splitter = utils.TextSplitter()
+        assistant = utils.GptModel()
+
+        data_model_type = data_model_type.lower()
+        data_model:str = utils.ReadFiles().read_txt(constants.DataModelGeneratorConstants().DATA_MODEL_PATH[data_model_type])
+
+        products_names = []
+        for file_path in file_paths:
+            content = read_files.read_file(file_path)
+            chunks = text_splitter.split_text(content)
+            for chunk in chunks:
+                prompt = prompts.get_prompt_for_getting_product().format(data_model, chunk)
+                response = assistant.get_completion(prompt)
+                formated_response:list = utils.FormatResponse().format_response(response, 'python')
+                products_names.extend(formated_response)
+        return list(set(products_names))
+    except Exception as e:
+        logging.log(logging.ERROR, f"An error occurred while getting the product names: {str(e)}")
+        return f"An error occurred while getting the product names: {str(e)}"
