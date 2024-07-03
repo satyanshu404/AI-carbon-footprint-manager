@@ -25,6 +25,8 @@ from langchain.agents import tool
 from langchain.text_splitter import MarkdownTextSplitter
 from llama_index.core import VectorStoreIndex, get_response_synthesizer
 from llama_index.core import Document
+from llama_index.core.vector_stores import MetadataFilters
+from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.postprocessor import SimilarityPostprocessor
@@ -53,11 +55,13 @@ class ReadFiles:
         elif self.get_extension(file_path) == '.docx':
             return self.read_docx(file_path)
         elif self.get_extension(file_path) in ['.csv', '.xlsx', '.xls']:
-            return self.read_excel_or_csv(file_path)
+            df: pd.DataFrame = self.read_excel_or_csv(file_path)
+            return df.to_string()
         elif self.get_extension(file_path) == '.html':
             return self.read_html(file_path)
         elif self.get_extension(file_path) == '.json':
-            return self.read_json(file_path)
+            json_data = self.read_json(file_path)
+            return json.dumps(json_data, indent=4)
         else:
             raise ValueError(f"Unsupported file type: {self.get_extension(file_path)}")
     
@@ -82,11 +86,11 @@ class ReadFiles:
             df = pd.read_csv(file_path)
         else:
             df = pd.read_excel(file_path)
-        return df.to_string(index=False)
+        return df
     
     def read_json(self, file_path:str) -> str:
         with open(file_path, 'r') as file:
-            return json.dumps(json.load(file), indent=4)
+            return json.load(file)
     
     def read_html(self, file_path:str) -> str:
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -303,7 +307,7 @@ class Retriever:
             response = self.query_engine(query, retriever)
 
             print(f"Got {len(response.source_nodes)} chunks.")
-            return response, [doc.text for doc in response.source_nodes]
+            return [doc.text for doc in response.source_nodes]
         except Exception as e:
             return f"Got an error while reteriving the chunks: {e}"
 
@@ -384,9 +388,11 @@ class FormatJson:
         
 class TextSplitter:
     '''Split the text into chunks using the markdown text splitter'''
-    def __init__(self):
-        self.chunk_size = constants.TextSplitterConstants.CHUNK_SIZE
-        self.chunk_overlap = constants.TextSplitterConstants.CHUNK_OVERLAP
+    def __init__(self,
+                 chunk_size:int = constants.TextSplitterConstants.CHUNK_SIZE,
+                 chunk_overlap:int = constants.TextSplitterConstants.CHUNK_OVERLAP):
+        self.chunk_size = chunk_size
+        self.chunk_overlap = chunk_overlap
     
     def split_text(self, document: str) -> list[str]:
         '''Split the text into chunks using the markdown text splitter'''
@@ -416,3 +422,11 @@ class FormatResponse:
        
         python_list = ast.literal_eval(cleaned_text.strip())
         return python_list
+    
+# class Retriever2:
+
+# if __name__ == "__main__":
+#     rf = Retriever()
+#     print(rf.reterive('JSW Mines', ['temp.json']))
+#     print(rf.reterive('JSW Mines', ['data/JSW Steel ESG Databook 2022.xlsx']))
+
