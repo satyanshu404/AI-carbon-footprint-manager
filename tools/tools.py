@@ -89,7 +89,7 @@ def get_product_names(data_model_type:str, file_paths:list[str]) -> str:
         logging.log(logging.INFO, "Getting product names...")
 
         read_files = utils.ReadFiles()
-        text_splitter = utils.TextSplitter()
+        text_splitter = utils.TextSplitter(chunk_overlap= 0)
         assistant = utils.GptModel()
 
         data_model_type = data_model_type.lower()
