@@ -27,20 +27,69 @@ You understand the task provided and give the response accordingly.
 
 def get_react_prompt():
     # Get the react prompt template
-    return """Answer the following User query as best you can. You have access to the following tools:
+    return """
+You are an AI task executer, you are responsible for executing the task provided by the user till the end. 
+You are also capable of reasoning and acting to completely solve complex tasks. Follow the ReACT (Reasoning and Acting) framework to break down problems and find solutions. Your responses should follow this structure:
 
+Thought: Analyze the current situation and consider possible actions.
+Action: Choose an action to take based on your thought process.
+Observation: Describe the result of your action.
+Repeat the process until you reach a final answer.
+
+### IMPORTANT ###: 
+You have to carry out all the task by yourserf, user will not be present to complete your letover task. You have to take action accordingly to complete the task.
+
+You are provided with the following tools: 
 {0}
-First Understand the question, break it down and think step by step then act.
-First create multiple plans, then select one optimal plan, verify the plan, then act accordingly.
 
-Question: the input question you must answer
-Thought: you should always think about what to do
-Action: the action to take, should be one of [{1}]
-Action Input: the input to the action 
-Observation: the result of the action
-... (this Thought/Action/Action Input/Observation can repeat N times)
-Thought: I now know the final answer
-Final Answer: the final answer to the original input question
+When presented with a user input, follow these steps:
+1. Task Analysis:
+   - Carefully read and understand the input task.
+   - Identify key components, constraints, and goals.
+
+2. Strategic Planning:
+   - Break down the problem into manageable sub-tasks.
+   - Develop multiple potential solution strategies (at least 3).
+   - Evaluate each strategy based on efficiency, feasibility, and alignment with the goal.
+   - Select the optimal plan and briefly justify your choice.
+
+3. Execution Loop:
+   Repeat the following steps until you have sufficient information to answer the task:
+
+   a) Thought:
+      - Reflect on your current understanding and progress.
+      - Identify the next logical step in your chosen plan.
+
+   b) Action:
+      - Select the most appropriate action from the available options: [{1}]
+      - Ensure the chosen action aligns with your current thought process.
+
+   c) Action Input:
+      - Provide the necessary input for the selected action.
+      - Be specific and concise in your input.
+
+   d) Observation:
+      - Carefully analyze the result of the action.
+      - Update your understanding based on this new information.
+
+   e) Iteration:
+      - Determine if further actions are needed.
+      - If yes, return to step (a). If no, proceed to the Final Answer.
+
+4. Final Answer:
+   - Synthesize all gathered information.
+   - Formulate a clear, concise, and complete answer to the original task.
+   - Ensure your answer directly addresses all aspects of the query.
+   - If any uncertainties remain, acknowledge them transparently.
+
+### Remember ###:
+- Always think step-by-step and show your reasoning.
+- Be adaptive; if a chosen plan proves ineffective, be ready to revise your strategy.
+- Maintain focus on the original task throughout the process.
+- You have to carry out all the task by yourserf, user will not be present to complete your letover task. You have to take action accordingly to complete the task.
+
+### User Task ###
+
 """
 
 def get_search_engine_prompt():
@@ -119,30 +168,26 @@ Guidelines:
 """
 
 def get_data_model_generator_prompt():
-    # Get the data model generator prompt template
     return """
-Create a data model for products responsible for carbon emissions or greenhouse gases based on the company's environmental data.
+Task: Create a actual comprehensive list of data models for all products responsible for carbon emissions or greenhouse gases based on the company's environmental data.
 
 Input:
-- Company's environmental data file path
-- Data model format: {0}
-
-Steps:
-1. Extract important products responsible for carbon emissions/greenhouse gases from the data.
-2. Create a data model focusing on each product's carbon emissions/greenhouse gases dat.
-
-Instructions:
-1. Use the AI assistant tool for help. Provide context and detailed information in queries.
-2. Extract relevant products and their carbon emissions/greenhouse gases data.
-3. Create a list of JSON objects, each representing a product's carbon emissions/greenhouse gases data.
-4. Follow the provided data model format for each object.
-5. Include all fields from the original data model, even if values are missing.
-6. Use multiple detailed queries to the AI tool for better data retrieval.
+1. Company's environmental data file paths
+2. Data model format: 
+{0}
 
 Output:
-- Finally return all JSON objects in list which containing important products' carbon emmision/greenhouse gases data.
-- Each object should be in dictionary format as per the provided data model.
-- Provide the response in strict JSON format, without additional text.
+- A list of JSON objects, each representing all product's carbon emissions/greenhouse gases data.
+For example:
+Let say in given company's data, there are n products for which carbon emissions or greenhouse gases data is available like coal, oil, gas, etc. 
+Then you should return a list with n JSON objects, each containing the data for a single product in detailed format.
+SO run in loop to find data each product and fill the data in the JSON object and return the list of JSON objects.
+Important Notes:
+- Ensure all data fields are from the data only.
+- Use null for missing values instead of omitting fields.
+- Validate the final JSON output for correct formatting and completeness.
+- Do not include any additional text in the output, only the list of Data Models.
+- Complete the whole task by yourself, user will not be present to complete your leftover task.
 """
 
 def get_prompt_for_getting_product():
