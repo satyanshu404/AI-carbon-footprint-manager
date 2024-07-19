@@ -13,6 +13,19 @@ class Constants:
     FACTUAL_TEMPERATURE: float = 0.1
 
 @dataclass
+class DataModelGeneratorAgentConstants:
+    MAX_EXECUTION_TIME: int = 1000
+    MAX_ITERATIONS: int = 100
+
+@dataclass
+class DecarbonizationProtocolConstants:
+    MAX_EXECUTION_TIME: int = 10_000
+    MAX_ITERATIONS: int = 100
+    DATA_REPO_PATH: str = "data/Decarbonization Protocol/Company Data"
+    DOCS_REPO_PATH: str = "data/Decarbonization Protocol/Documenations"
+    TASK_LIST: List[str] = field(default_factory=lambda: ['Automatic','Custom'])
+
+@dataclass
 class GoogleSearchConstants:
     GOOGLE_SEARCH_URL: str = "https://www.googleapis.com/customsearch/v1"
     GOOGLE_SEARCH_RESULTS_PATH: str = "data/google_search_results"
@@ -28,7 +41,8 @@ class FormatJsonConstants:
 
 @dataclass
 class GroqModelConstants:
-    MODEL_NAME: str = "llama3-70b-8192"
+    # MODEL_NAME: str = "llama3-70b-8192"
+    MODEL_NAME: str = "gemma2-9b-it"
 
 @dataclass
 class CodeExecuterConstants:
@@ -38,7 +52,13 @@ class CodeExecuterConstants:
 class RetrieverConstants:
     RETRIEVER_FILE_LOCAITON:str = "data/reterival_data"
     SIMILARITY_TOP_K: int = 3
-    SIMILARITY_CUTOFF: float = 0.8
+    SIMILARITY_CUTOFF: float = 0.7
+
+@dataclass
+class LLMRetrieverConstants:
+    CHUNK_SIZE: int = 125_000
+    CHUNK_OVERLAP: int = 0
+    MODEL_NAME: str = "gemma2-9b-it"
 
 @dataclass
 class WebScraperConstants:
