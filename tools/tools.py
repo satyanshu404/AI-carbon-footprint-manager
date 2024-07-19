@@ -49,11 +49,11 @@ def get_image_content(image_path: str) -> str:
     
 @tool
 def code_generator_and_executer(prompts:str, function_name: str, **kwargs):
-    '''Create and Executes the code provided in the prompts and returns the result.
+    '''Write and Executes code based on the provided prompts and returns the result.
     Arguments:
     prompts: str - A detailed prompt with informations and insturctions for generating the code.
     function_name: str - The name of the function to execute.
-    **kwargs - The necessary arguments to pass to the function.
+    **kwargs - The necessary arguments to pass to the function for calculation in dictionary form.
     '''
     try:
         logging.log(logging.INFO, "Executing the code...")
@@ -63,14 +63,30 @@ def code_generator_and_executer(prompts:str, function_name: str, **kwargs):
         return f"An error occurred while executing the code: {str(e)}"
     
 @tool
-def reterive_data(query: str, file_paths: list[str]) -> str:
+def retrieve_data(query: str, file_paths: list[str]) -> str:
     '''Retrieves the data related to the provided query and returns the data.'''
     try:
         logging.log(logging.INFO, "Retrieving data...")
-        return utils.Retriever().reterive(query, file_paths)
+        return utils.Retriever().retrieve(query, file_paths)
     except Exception as e:
         logging.log(logging.ERROR, f"An error occurred while retrieving the data: {str(e)}")
         return f"An error occurred while retrieving the data: {str(e)}"
+
+@tool
+def retrieve_data_using_llm(query: str, file_paths: list[str]) -> str:
+    '''
+    Retrieves the data related to the provided query using LLM and returns the data.
+    Arguments:
+        query: str - The query to search for.
+            Example: "what are the cabron emissions related to XYZ?", "What are the green house gases released during manufacturing of ABC?", etc.
+        file_paths: list[str] - The list of file paths to search from.
+    '''
+    try:
+        logging.log(logging.INFO, "Retrieving data using LLM...")
+        return utils.LLMRetriever().retrieve(query, file_paths)
+    except Exception as e:
+        logging.log(logging.ERROR, f"An error occurred while retrieving the data using LLM: {str(e)}")
+        return f"An error occurred while retrieving the data using LLM: {str(e)}"
 
 @tool
 def ai_assistant(prompt:str) -> str:
@@ -108,3 +124,18 @@ def get_product_names(data_model_type:str, file_paths:list[str]) -> str:
     except Exception as e:
         logging.log(logging.ERROR, f"An error occurred while getting the product names: {str(e)}")
         return f"An error occurred while getting the product names: {str(e)}"
+    
+@tool 
+def save_as_json(content:str, file_path: str, directory:str = 'data/data_model',) -> str:
+    '''Saves the content as a json file at the provided path.'''
+    try:
+        logging.log(logging.INFO, "Saving the results...")
+        # check if the dir is present or not if not create and write it
+        file_path = os.path.join(directory, file_path)
+        jsonwriter = utils.JsonWriter()
+        jsonwriter.write(content, file_path)
+        logging.log(logging.INFO, f"Json file saved successfully at {file_path}")
+        return f"Json file saved successfully at {file_path}"
+    except Exception as e:
+        logging.log(logging.ERROR, f"An error occurred while saving the results: {str(e)}")
+        return f"An error occurred while saving the results: {str(e)}"
