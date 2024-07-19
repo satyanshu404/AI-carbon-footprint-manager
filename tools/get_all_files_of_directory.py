@@ -2,7 +2,7 @@ import os
 from langchain_core.tools import tool
 
 @tool
-def files_in_directory(directory: str = './') -> list[str] | str:
+def files_in_directory(directory: str = './data') -> list[str] | str:
     '''Return the List all files in a directory and its subdirectories.'''
     all_files = []
     try:
