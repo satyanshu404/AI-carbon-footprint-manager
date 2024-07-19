@@ -21,13 +21,13 @@ from langchain.agents.output_parsers import OpenAIFunctionsAgentOutputParser
 from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 
 # load environment variables
-load_dotenv()
+load_dotenv(override=True)
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class SearchEngineAgent:
     def __init__(self):
-        self.tools = [files_in_directory, create_json_summary, tools.google_search, tools.reterive_data]
+        self.tools = [files_in_directory, create_json_summary, tools.google_search, tools.retrieve_data_using_llm]
 
         self.output_schema:str = utils.ReadFiles().read_txt(constants.SearchEngineConstants.FILE_PATH)
     
