@@ -22,13 +22,14 @@ from langchain.agents.output_parsers import OpenAIFunctionsAgentOutputParser
 from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 
 # load environment variables
-load_dotenv()
+load_dotenv(override=True)
+print(os.getenv('OPENAI_API_KEY'))
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class DataModelGenerator:
     def __init__(self):
-        self.tools = [files_in_directory, tools.read_files, tools.get_product_names, tools.ai_assistant, tools.reterive_data]
+        self.tools = [files_in_directory, tools.read_files, tools.get_product_names, tools.ai_assistant, tools.retrieve_data_using_llm, tools.save_as_json]
         self.data_model_list = constants.DataModelGeneratorConstants().DATA_MODEL_LIST 
         
         self.repo_path = constants.DataModelGeneratorConstants.REPO_PATH
@@ -68,7 +69,14 @@ class DataModelGenerator:
         agent_chain = RunnablePassthrough.assign(agent_scratchpad= lambda x: format_to_openai_functions(x["intermediate_steps"])) | chain
         memory = ConversationBufferMemory(return_messages=True,memory_key="chat_history")
 
-        agent_executor = AgentExecutor(agent=agent_chain, tools=self.tools, verbose=True, memory=memory, return_intermediate_steps=True, handle_parsing_errors=True)
+        agent_executor = AgentExecutor(agent=agent_chain, 
+                                       tools=self.tools, 
+                                       verbose=True, 
+                                       memory=memory, 
+                                       return_intermediate_steps=True, 
+                                       handle_parsing_errors=True, 
+                                       max_execution_time=constants.DataModelGeneratorAgentConstants.MAX_EXECUTION_TIME, 
+                                       max_iterations=constants.DataModelGeneratorAgentConstants.MAX_ITERATIONS)
         
         return agent_executor
     
