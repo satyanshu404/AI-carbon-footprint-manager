@@ -143,51 +143,53 @@ def get_calculator_prompt():
     # Get the calculator prompt template
     return """
 Objective: To calculate the carbon emissions of the product(s). 
-For that Always think and act, if the data is not available then search for the data.
+For that Always think then act.
 
 Input: An image path
 {0}.
-Output: Total carbon emitted by each product (Numerical Value) with actual unit.
+Output: Total carbon footprint of each product (Numerical Value) with actual unit.
 
 Calculations for the carbon emission may be difficilt, so always first think and then act.
 If needed break down the task into subtasks and act accordingly.
-The information about the product carbon footprint may not be present, so break down the task, search about from which material product is made, then search for its carbon footprint.
-You are also provided with the a tool which can write code and execute it, so call that tool if you need to do mathematical calulations. Beacuase data accuracy is crucial.
+The information about the product carbon footprint may not be present, so break down the task, what are the green house gaseous are released during manufacuring of each product, then search for its carbon footprint.
+You are also provided with the a tool which can write the formula in code format and can execute it, so call that tool if you need to do mathematical calulations for carbon footprint. Beacuase data accuracy is crucial.
 
 
 Guidelines:
-    - Restrict yourself to the calculation of carbon emissions of the products only, noting else, If the content is not useful for the calculation skip it and search again.
-    - Search for data if unknown; do not make assumptions. Data accuracy is crucial.
+    - Restrict yourself to the calculation of carbon emissions of the products only, noting else, If the content is not useful then search again with a better qury.
     - Always first check if the files exists in the directory or not for data, if it is not available, then use tools to get the data.
-    - Utilize the provided tools for the entire process.
-    - Return results only in JSON format, without any additional text.
+    - Utilize the provided tools.
     - Cross-verify facts and figures from reliable sources if needed.
-    - Do not infer or add any information that is not explicitly stated or provided.
-    - If the data in the image is unclear or ambiguous, search for the data to make a calculation.
+    - Provide the output in the specified format only.
+    - Mention the assumptions made during the calculation in json output.
     - Include references or links to sources used for verification in the JSON output.
 """
 
 def get_data_model_generator_prompt():
     return """
-Task: Create a actual comprehensive list of data models for all products responsible for carbon emissions or greenhouse gases based on the company's environmental data.
+Task: 
+1. Create the data models for all products which are responsible for carbon emissions or greenhouse gases based on the company's environmental data.
+2. Write all the the data models in a JSON file one by one for each product in one file only, whose name can be given in this format company_name_data_model.json.
+3. Finally read that file to show the results as json.
 
 Input:
 1. Company's environmental data file paths
 2. Data model format: 
 {0}
-
-Output:
-- A list of JSON objects, each representing all product's carbon emissions/greenhouse gases data.
+You are strictly advised to find the data for each field that are asked in the data model and fill the JSON object accordingly.
 For example:
 Let say in given company's data, there are n products for which carbon emissions or greenhouse gases data is available like coal, oil, gas, etc. 
-Then you should return a list with n JSON objects, each containing the data for a single product in detailed format.
-SO run in loop to find data each product and fill the data in the JSON object and return the list of JSON objects.
-Important Notes:
-- Ensure all data fields are from the data only.
-- Use null for missing values instead of omitting fields.
+Then you should find the values for the key present in the data model for each product and fill the JSON object and write the content in the file for each product and then finally read that file to show results.
+There must be n data model in the final JSON file.
+
+So run in loop, find values for the key present in the data model for n product and fill the JSON object with correct values and write the content in the file for each product and then finally read that file to show results.
+
+###Important Notes###:
+- Ensure for each product, all the values of Data model are from the companies files only.
+- Use simply null for missing values instead of omitting fields.
+- Keep the same given Data Model format for all products.
 - Validate the final JSON output for correct formatting and completeness.
-- Do not include any additional text in the output, only the list of Data Models.
-- Complete the whole task by yourself, user will not be present to complete your leftover task.
+- Complete the whole task, user will not be present to complete your leftover task.
 """
 
 def get_prompt_for_getting_product():
@@ -209,4 +211,91 @@ Return Python list of these product names only.
 If no such products are found, return an empty list.
 Do not include non-product names (e.g., cities, methods) in the list.
 Do not give additional text other than python list.
+'''
+
+def get_system_prompt_for_llm_retriever():
+    # Get the system prompt for LLM retriever
+    return """
+You are an advanced information retrieval system. Your purpose is to efficiently search and extract relevant data from large text corpora. 
+Here's what you need to know and do:
+1. Understand complex queries
+2. Identify critical information
+3. Provide accurate, relevant responses
+
+Your main task is retrieving information that best matches the user's input and context.
+Only give the result in structured JSON format. do not include any additional text other than JSON.
+
+Conctext:
+{0}
+
+Query: {1}
+"""
+
+def get_prompt_for_automatic_decarbonization_protocol():
+    # Get the prompt for decarbonization protocol
+    return '''
+###Overview:
+The Decarbonization Protocol is a set of guidelines and actions aimed at reducing carbon emissions and promoting sustainability.
+So evaluate the company's progress on the decarbonization protocol by analyzing their environmental data.
+
+Task: 
+1. Read the documentaion files carefully and find all the most important questions that can be asked from any company to know their progress on the decarbonization protocol.
+2. Then select list of 15-20 questions from the pool of all the extracted questions.
+3. Find the answers to those selected questions from the company's data files one by one.
+
+Input:
+1. Documentation file paths related to the decarbonization protocol.
+2. Data files paths.
+
+Output: 
+All the extracted questions and answers must be in a JSON format and return the complete list of 15-20 extracted question answer.
+list(
+    dict(
+        "question": str,
+        "answer": To the point answer to the question, if data not prestent, then write "Data not available".
+    ),
+    dict(
+        "question": str,
+        "answer": To the point answer to the question, if data not prestent, then write "Data not available".
+    ),
+    ...
+)
+
+###Important Notes###:
+- Ensure the questions are relevant to the decarbonization protocol, thats may helps the company to see their progress in the decarbonization.
+- Find the answers from the company's data files only.
+- Try to find the find the answers in the batch of 3-5 questions at a time. 
+- Provide the output in the specified format only.
+- Validate the final JSON output for correct formatting and completeness.
+- Complete the whole task, user will not be present to complete your leftover task.
+'''
+
+def get_prompt_for_custom_decarbonization_protocol():
+    # Get the prompt for custom decarbonization protocol
+    return '''
+###Overview:
+The Decarbonization Protocol is a set of guidelines and actions aimed at reducing carbon emissions and promoting sustainability.
+So evaluate the company's progress on the decarbonization protocol by analyzing their environmental data.
+
+Task:
+1. Understand the User Query carefully.
+2. Find the answers to the user query from the company's data files related to the decarbonization protocol.
+
+Input:
+1. User Query
+2. Data files paths.
+
+Output:
+The answer to the user query in a JSON format.
+json(
+    "query": str,
+    "answer": To the point answer to the question, if data not prestent, then write "Data not available".
+)
+
+###Important Notes###:
+- Ensure the questions are relevant to the decarbonization protocol, thats may helps the company to see their progress in the decarbonization.
+- Find the answers from the company's data files only.
+- Provide the output in the specified format only.
+- Validate the final JSON output for correct formatting and completeness.
+- Complete the whole task, user will not be present to complete your leftover task.
 '''
