@@ -18,6 +18,8 @@ import requests
 import constants
 import subprocess
 import importlib.util
+from openpyxl import load_workbook
+from typing import Optional
 import constants 
 from groq import Groq
 from prompts import prompts
@@ -54,9 +56,8 @@ class ReadFiles:
             return self.read_pdf(file_path)
         elif self.get_extension(file_path) == '.docx':
             return self.read_docx(file_path)
-        elif self.get_extension(file_path) in ['.csv', '.xlsx', '.xls']:
-            df: pd.DataFrame = self.read_excel_or_csv(file_path)
-            return df.to_string()
+        elif self.get_extension(file_path) in ['.csv', '.xlsx', '.xls']: 
+            return self.read_excel_or_csv(file_path)
         elif self.get_extension(file_path) == '.html':
             return self.read_html(file_path)
         elif self.get_extension(file_path) == '.json':
@@ -81,12 +82,45 @@ class ReadFiles:
         doc = docx.Document(file_path)
         return '\n'.join([paragraph.text for paragraph in doc.paragraphs])
     
+    def read_xlsx(self, file_path:str) -> str:
+        '''Reads the content of an excel file and returns the content as a formated string.
+        Example:
+            1 2 3 A B
+            ---------
+            4 5 6 C D
+            ---------
+        '''
+        workbook = load_workbook(filename=file_path)
+        sheet = workbook.active
+        
+        data:list = []
+        for row in sheet.iter_rows(values_only=True):
+            if any(cell is not None and cell != "" for cell in row):
+                data.append(row)
+
+        string: str = ""
+        for row in data:
+            row_data =  str(row)
+            row_data = row_data.replace("None", "")
+            row_data = row_data.replace("(", "").replace(")", "")
+            row_data = row_data.replace(",", " ")
+            string += row_data + f"\n{50*'-'}" + "\n"
+            
+        return string
+    
     def read_excel_or_csv(self, file_path:str) -> str:
+        flag = False
         if self.get_extension(file_path) == '.csv':
             df = pd.read_csv(file_path)
-        else:
-            df = pd.read_excel(file_path)
-        return df
+            path = file_path.split('.')[0] + '.xlsx'
+            df.to_excel(path, index=False)
+            file_path = path
+            flag = True
+            
+        data: str = self.read_xlsx(file_path)
+        if flag:    
+            os.remove(file_path)
+        return data
     
     def read_json(self, file_path:str) -> str:
         with open(file_path, 'r') as file:
@@ -215,6 +249,7 @@ class GroqModel:
             **kwargs
         )
         if chat_completion:
+            # print(chat_completion)
             return chat_completion.choices[0].message.content
 
 class GptModel:
@@ -244,7 +279,7 @@ class CodeExecuter:
         '''Generate code from the messages'''
         groq = GroqModel()
         messages = [
-            {'role': 'system', 'content': 'You are a Python tutor. Just give the python code in text, nothing else, no notations, not any asterisk, nothing. Just the code.'},
+            {'role': 'system', 'content': 'You are a Python coder. Just give the python code in text, nothing else, no notations, not any asterisk, nothing. Just the code.'},
             {'role': 'system', 'content': f'The pyhton function must have the name {function_name}'},
             {'role': 'user', 'content': prompt}]
         code =  groq.get_completion(messages)
@@ -265,7 +300,11 @@ class CodeExecuter:
             code_filename = f"{constants.CodeExecuterConstants.BASEFILEPATH}/generated_code.py"
             self.generate_code(prompt, code_filename, function_name)
             generated_function = self.load_function_from_file(code_filename, function_name)
-            result = generated_function(**kwargs)
+            # result = generated_function(**kwargs)
+            if kwargs:
+                result = generated_function(**kwargs)
+            else:
+                result = generated_function()
             return result
         except Exception as e:
             return f"An error occurred while executing the code: {str(e)}"
@@ -278,8 +317,8 @@ class Retriever:
         '''Create the documents from the file paths'''
         return [Document(text=self.RF.read_file(file_path)) for file_path in file_paths]
     
-    def create_reteriver(self, documents: list[Document]) -> VectorStoreIndex:
-        '''Create the reteriver'''
+    def create_retriever(self, documents: list[Document]) -> VectorStoreIndex:
+        '''Create the retriever'''
         index = VectorStoreIndex.from_documents(documents)
         retriever = VectorIndexRetriever(
                     index=index,
@@ -298,13 +337,14 @@ class Retriever:
         response = query_engine.query(query)
         return response
 
-    def reterive(self, query:str, file_paths: list[str]) -> list[str] | str:
+    def retrieve(self, query:str, file_paths: list[str]) -> list[str] | str:
         '''Retrive the relevant chunks from the files at the based on the query and returns the chunks as a list of strings which are important to the query.'''
         try:
             print("Retrieving chunks...")
             documents = self.create_documents(file_paths)
-            retriever = self.create_reteriver(documents)
-            response = self.query_engine(query, retriever)
+            retriever = self.create_retriever(documents)
+            response: RetrieverQueryEngine = self.query_engine(query, retriever)
+            # response = self.query_engine(query, retriever)
 
             print(f"Got {len(response.source_nodes)} chunks.")
             return [doc.text for doc in response.source_nodes]
@@ -339,7 +379,7 @@ class WebScraper:
             with open(file_path, 'wb') as file:
                 file.write(response.content)
             if query:
-                return Retriever().reterive(query, [file_path])
+                return LLMRetriever().retrieve(query, [file_path])
             
             return ReadFiles().read_file(file_path)
         except Exception as e:
@@ -423,10 +463,56 @@ class FormatResponse:
         python_list = ast.literal_eval(cleaned_text.strip())
         return python_list
     
-# class Retriever2:
+class LLMRetriever:
+    def __init__(self):
+        self.model = GptModel()
+        self.RF = ReadFiles()
+        self.text_splitter = TextSplitter(chunk_overlap=constants.LLMRetrieverConstants.CHUNK_OVERLAP,
+                                          chunk_size=constants.LLMRetrieverConstants.CHUNK_SIZE)
 
-# if __name__ == "__main__":
-#     rf = Retriever()
-#     print(rf.reterive('JSW Mines', ['temp.json']))
-#     print(rf.reterive('JSW Mines', ['data/JSW Steel ESG Databook 2022.xlsx']))
+    def make_prompt(self, query:str, context: str) -> list[dict]:
+        '''Make the prompt for the LLM'''
+        return prompts.get_system_prompt_for_llm_retriever().format(context, query)
+
+    def retrieve(self, query:str, file_paths: list[str]) -> Optional[list[str]]:
+        '''Retrieve the relevant chunks from the documents based on the query, context and instruction.'''
+        documents:list = [self.RF.read_file(file_path) for file_path in file_paths]
+        
+        data = []
+        for document in documents:
+            chunks: list[str] = self.text_splitter.split_text(document)
+            print(f"Got {len(chunks)} chunks.")
+            messages: list[str] = [self.make_prompt(query, chunk) for chunk in chunks]  
+            responses: list[str] = [self.model.get_completion(message) for message in messages]
+            data.append(responses)
+
+        return data
+
+class JsonWriter:
+    '''Write the json file'''
+    def __init__(self):
+        pass
+
+    def read_json_file(self, file_path: str) -> list[dict]:
+        '''Read the json file'''
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                data = json.load(file)
+        else:
+            data = []
+        return data
+    
+    def write_json_file(self, file_path:str, data: list[dict]) -> None:
+        '''Write the json file'''
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=4)
+        
+    def write(self, data: str, file_path:str) -> str:
+        '''Write the json file'''
+        try:
+            existing_data = self.read_json_file(file_path)
+            existing_data.append(json.loads(data))   
+            self.write_json_file(file_path, existing_data)
+        except Exception as e:
+            return f"An error occurred while writing the data: {str(e)}"
 
