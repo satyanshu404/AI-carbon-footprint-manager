@@ -23,7 +23,6 @@ from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 
 # load environment variables
 load_dotenv(override=True)
-print(os.getenv('OPENAI_API_KEY'))
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
