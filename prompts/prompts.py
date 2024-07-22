@@ -253,10 +253,12 @@ list(
     dict(
         "question": str,
         "answer": To the point answer to the question, if data not prestent, then write "Data not available".
+        "source": [list of exact sentences from the data files that supports the answer]
     ),
     dict(
         "question": str,
         "answer": To the point answer to the question, if data not prestent, then write "Data not available".
+        "source": [list of exact sentences from the data files that supports the answer]
     ),
     ...
 )
@@ -290,6 +292,7 @@ The answer to the user query in a JSON format.
 json(
     "query": str,
     "answer": To the point answer to the question, if data not prestent, then write "Data not available".
+    "source": [list of exact sentences from the data files that supports the answer]
 )
 
 ###Important Notes###:
