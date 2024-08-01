@@ -27,7 +27,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 class SearchEngineAgent:
     def __init__(self):
-        self.tools = [files_in_directory, create_json_summary, tools.google_search, tools.retrieve_data_using_llm]
+        self.tools = [files_in_directory, tools.google_search, tools.retriever_router]
 
         self.output_schema:str = utils.ReadFiles().read_txt(constants.SearchEngineConstants.FILE_PATH)
     
