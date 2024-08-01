@@ -6,9 +6,14 @@ langchain
 faiss-cpu
 openpyxl
 pymupdf
+PyMuPDF
 streamlit
 pdfplumber
 python-docx
 PyPDF2
 pillow
 groq
+llama-index-extractors-entity
+llama-index
+llama-index-llms-openai
+llama-index-embeddings-openai
