@@ -16,18 +16,15 @@ import base64
 import mimetypes
 import requests
 import constants
-import subprocess
 import importlib.util
 from openpyxl import load_workbook
 from typing import Optional
-import constants 
 from groq import Groq
 from prompts import prompts
-from langchain.agents import tool
+import tools.reteriver as rt
 from langchain.text_splitter import MarkdownTextSplitter
 from llama_index.core import VectorStoreIndex, get_response_synthesizer
 from llama_index.core import Document
-from llama_index.core.vector_stores import MetadataFilters
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
@@ -36,7 +33,7 @@ from llama_index.core.postprocessor import SimilarityPostprocessor
 from dotenv import load_dotenv
 
 
-load_dotenv()
+load_dotenv(override=True)
 
 class ReadFiles:
     '''Reads the content of a file based on its extension and returns the content as a string or a dataframe.'''
@@ -379,14 +376,19 @@ class WebScraper:
             with open(file_path, 'wb') as file:
                 file.write(response.content)
             if query:
-                return LLMRetriever().retrieve(query, [file_path])
+                return rt.RetrieverRouter().route(query, [file_path])
             
             return ReadFiles().read_file(file_path)
         except Exception as e:
             return f"An error occurred while scraping the content: {str(e)}"
 
-class FormatJson:
-    '''Format the json file for the langchain agent'''
+class JsonFormatter:
+    '''Format the json file for the langchain agent
+    Description:
+        - all the curly braces {} are replaced with dict()
+        - all the square brackets [] are replaced with list()
+        Note: Having {} in json file cause conflict with the langchain agent's input
+    '''
     def __init__(self):
         self.save_dir = constants.FormatJsonConstants.SAVE_DIRECTORY
 
@@ -408,7 +410,7 @@ class FormatJson:
         with open(file_path, 'w') as file:
             file.write(text)
 
-    def format_json_file(self, file_path:str, file_name: str) -> str:
+    def format_json(self, file_path:str, file_name: str) -> str:
         '''Format the json file for the langchain agent
         Description:
             - all the curly braces {} are replaced with 'dict()'
@@ -421,8 +423,7 @@ class FormatJson:
             formated_text = self.format_text(text)
 
             self.save_file(formated_text, file_name)
-            
-            return "file has been saved to: " + file_path
+            return f"Json file saved successfully at {self.save_dir.format(file_name)}"
         except Exception as e:
             return f"An error occurred while formatting the json file: {str(e)}"
         
@@ -511,8 +512,7 @@ class JsonWriter:
         '''Write the json file'''
         try:
             existing_data = self.read_json_file(file_path)
-            existing_data.append(json.loads(data))   
+            existing_data.extend(json.loads(data))   
             self.write_json_file(file_path, existing_data)
         except Exception as e:
             return f"An error occurred while writing the data: {str(e)}"
-
