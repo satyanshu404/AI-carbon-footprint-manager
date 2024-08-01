@@ -5,13 +5,15 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
+import time
 import tools.utils as utils
+import tools.reteriver as rt
 import constants
 from prompts import prompts
 from langchain.agents import tool
 import logging
 
-load_dotenv()
+load_dotenv(override=True)
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -99,7 +101,7 @@ def ai_assistant(prompt:str) -> str:
         return f"An error occurred from ai assistant side: {str(e)}"
     
 @tool
-def get_product_names(data_model_type:str, file_paths:list[str]) -> str:
+def get_product_names(data_model_type:str, file_paths:list[str]) -> list| str:
     '''Returns the list of product names.'''
     try:
         logging.log(logging.INFO, "Getting product names...")
@@ -126,16 +128,45 @@ def get_product_names(data_model_type:str, file_paths:list[str]) -> str:
         return f"An error occurred while getting the product names: {str(e)}"
     
 @tool 
-def save_as_json(content:str, file_path: str, directory:str = 'data/data_model',) -> str:
+def save_as_json(content:str, file_path: str, directory:str = 'data/data_model') -> str:
     '''Saves the content as a json file at the provided path.'''
     try:
         logging.log(logging.INFO, "Saving the results...")
         # check if the dir is present or not if not create and write it
-        file_path = os.path.join(directory, file_path)
+        os.makedirs(directory, exist_ok=True)
+        time.sleep(0.5)
+        # full_file_path = f'{directory}/{file_path}'
+        full_file_path = os.path.abspath(f'{directory}/{file_path}')
+        # full_file_path = os.path.join(directory, file_path)
         jsonwriter = utils.JsonWriter()
-        jsonwriter.write(content, file_path)
-        logging.log(logging.INFO, f"Json file saved successfully at {file_path}")
-        return f"Json file saved successfully at {file_path}"
+        jsonwriter.write(content, full_file_path)
+        logging.log(logging.INFO, f"Json file saved successfully at {full_file_path}")
+        return f"Json file saved successfully at {full_file_path}"
     except Exception as e:
         logging.log(logging.ERROR, f"An error occurred while saving the results: {str(e)}")
         return f"An error occurred while saving the results: {str(e)}"
+
+@tool
+def retriever_router(query: str, file_paths: list[str]) -> str:
+    '''Routes the query to the appropriate retriever and returns the retrieved data.'''
+    try:
+        logging.log(logging.INFO, "Routing the query to the appropriate retriever...")
+        return rt.RetrieverRouter().route(query, file_paths)
+    except Exception as e:
+        logging.log(logging.ERROR, f"An error occurred while routing the query: {str(e)}")
+        return f"An error occurred while routing the query to the appropriate retriever: {str(e)}"
+
+@tool
+def format_json_to_text_form(file_path: str, file_name: str) -> str:
+    '''Format the json file for the langchain agent
+    Description:
+        - all the curly braces {} are replaced with dict()
+        - all the square brackets [] are replaced with list()
+        Note: Having {} in json file cause conflict with the langchain agent's input.
+    '''
+    try:
+        logging.log(logging.INFO, "Formatting the json data...")
+        return utils.JsonFormatter().format_json(file_path, file_name)
+    except Exception as e:
+        logging.log(logging.ERROR, f"An error occurred while formatting the json data: {str(e)}")
+        return f"An error occurred while formatting the json data: {str(e)}"
