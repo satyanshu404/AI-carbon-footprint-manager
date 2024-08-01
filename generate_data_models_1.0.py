@@ -18,6 +18,8 @@ class DataModelGenerator:
         self.data_model_list = constants.DataModelGeneratorConstants().DATA_MODEL_LIST 
         
         self.repo_path = constants.DataModelGeneratorConstants.REPO_PATH
+        self.save_file_dir = constants.DataModelGeneratorConstants.SAVE_FILE_DIR
+
         self.reteriver = reteriver.RetrieverRouter()
 
         # temporary file for downloading the data 
@@ -49,7 +51,7 @@ class DataModelGenerator:
         ).lower()
 
         st.write(f"Selected data model: {self.data_model_type}")
-
+        # manaully add the data model path at location constants.DataModelGeneratorConstants().DATA_MODEL_PATH
         self.data_model_output_schema = utils.ReadFiles().read_txt(constants.DataModelGeneratorConstants().DATA_MODEL_PATH[self.data_model_type])
         return file_paths
     
@@ -70,35 +72,69 @@ class DataModelGenerator:
             prompt = prompts.get_prompt_for_datamodel_generation().format(product_name, data, self.data_model_output_schema)
             response = tools.ai_assistant.invoke({"prompt": prompt})
             # json_objects.append(response)
-            print(response)
             formated_response = response.split("```")[1].split("json")[-1].strip()
-            print(formated_response)
             json_objects.append(json.loads(formated_response))
         return json_objects
 
+    def get_file_name(self, file_paths: list[str]) -> str:
+        message = f'''
+        Overview:
+        Your task to come up with a file name to store the data model. We use a common format for saving the files company_name_data_model.json
+        so based on the give files paths, extract the company name and provide the file name.
+        Input:
+        File Paths: {file_paths}
+        Output:
+        a file name in the format company_name_data_model.json
+
+        Note: Always return the file name, nothing else, no text, no explanations just the file path.
+
+        ### Guidlines:
+        - Extract the company name from the file paths
+        - Use the extracted company name to create the file name in the format company_name_data_model.json
+        - Return only the file name, noting else
+        - the file extension must be .json
+'''
+        response = tools.ai_assistant.invoke({"prompt": message})
+        return response
+    
+    def save_data_models(self, json_objects: list[dict], file_name: str):
+        # save the data models
+        file_path = os.path.join(self.save_file_dir, file_name)
+        with open(file_path, "w") as f:
+            json.dump(json_objects, indent=4, fp=f)
+        logging.log(logging.INFO, f"Data models saved successfully at {file_path}")
+    
 
     def generate(self):
         logging.log(logging.INFO, "Running the data model generator application...")
-
+        st.set_page_config(layout="wide")
         st.title("Data Model Generator Application")
+        st.write("---")
+
+
         try: 
             file_paths: list[str] = self.read_input()
             if st.button("Run Agent"):
                 with st.spinner("Processing..."):
                     product_names = self.load_product_names(file_paths) 
-                    st.write("Product Names:")
+                    st.write("---")
+                    st.header("Results:")
+                    st.subheader("Product Names:")
                     st.write(product_names)
                     json_objects = self.create_json_objects(product_names, file_paths)
-                    st.write("Data Models:")
-                    [st.write(json_object) for json_object in json_objects]
-            
-                    [tools.save_as_json.invoke({"content": str(json_object), "file_path": "data_model.json"}) for json_object in json_objects]
-                    logging.log(logging.INFO, "Data models saved successfully!")
+                    st.write("---")
 
+                    st.subheader("Data Models:")
+                    st.write(json_objects)
+                    st.write("---")
+                    # save the data models
+                    file_name = self.get_file_name(file_paths)
+                    self.save_data_models(json_objects, file_name)
+                    # tools.save_as_json.invoke({"content": str(json_objects), "file_path": file_name, "directory": self.save_file_dir})
+                    logging.log(logging.INFO, "Data models saved successfully!")
         except:
             logging.log(logging.ERROR, "An error occurred while running the data model generator application...")
             st.write("An error occurred while running the data model generator application...")
-
 
 
 if __name__ == "__main__":
