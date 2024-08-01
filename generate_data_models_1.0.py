@@ -1,6 +1,5 @@
 import os
 import json
-import models
 from dotenv import load_dotenv
 import constants
 from tools import utils, tools, reteriver
