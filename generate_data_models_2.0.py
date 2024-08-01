@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import re
 import logging
 import json
 from dotenv import load_dotenv
@@ -27,9 +28,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 class DataModelGenerator:
     def __init__(self):
-        self.tools = [files_in_directory, tools.get_product_names, tools.ai_assistant, tools.retriever_router, tools.save_as_json]
+        self.tools = [tools.get_product_names, tools.ai_assistant, tools.retriever_router, tools.save_as_json]
         self.data_model_list = constants.DataModelGeneratorConstants().DATA_MODEL_LIST 
-        
+        self.save_file_dir = constants.DataModelGeneratorConstants.SAVE_FILE_DIR
         self.repo_path = constants.DataModelGeneratorConstants.REPO_PATH
 
         # temporary file for downloading the data 
@@ -81,13 +82,28 @@ class DataModelGenerator:
     def save_file(self, file_path: str, content: str):
         with open(file_path, "wb") as f:
             f.write(content)
+
+    def display_results(self, file_path: str):
+        pattern = r'[^\\/"\s]+\.json'
+        match = re.search(pattern, file_path)
+        if match:
+            file_path = match.group(0)
+        else:
+            raise ValueError(f"Invalid file path {file_path}")
         
+        full_file_path = os.path.join(self.save_file_dir, file_path)
+        with open(full_file_path, "r") as f:
+            content = json.load(f)
+        st.subheader("Results:")
+        st.write(content)
+        st.write("---")
     
     def invoke_agent(self):
         try:
             logging.log(logging.INFO, "Running the data model generator agent...")
-
+            st.set_page_config(layout="wide")
             st.title("Data Model Generator Agent")
+            st.write("---")
 
             # upload files
             uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True)
@@ -113,15 +129,14 @@ class DataModelGenerator:
 
             agent_executor = self.search_engine_agent()
             st_callback = StreamlitCallbackHandler(st.container())
-            
 
             if st.button("Run Agent"):
                 with st.spinner("Processing..."):
                     response = agent_executor.invoke(
                         {"input": file_paths}, 
                         callback_handler=st_callback)
-                    if response['output']:
-                        st.write(response['output'])
+                    st.write("---")
+                    self.display_results(response["output"])
         except Exception as e:
             logging.log(logging.ERROR, f"An error occurred: {str(e)}")
             st.write(f"An error occurred: {str(e)}")
