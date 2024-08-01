@@ -1,132 +1,84 @@
 [
-    [
-        {
-            "id": "1",
-            "specVersion": "1.0",
-            "version": 1,
-            "created": "2023-10-05T00:00:00Z",
-            "status": "active",
-            "validityPeriodStart": "2023-01-01",
-            "validityPeriodEnd": "2023-12-31",
-            "companyName": "JSW Energy",
-            "companyIds": [
-                "JSW001"
+    {
+        "id": null,
+        "specVersion": null,
+        "version": null,
+        "created": null,
+        "status": "under construction",
+        "validityPeriodStart": null,
+        "validityPeriodEnd": null,
+        "companyName": "JSW Energy",
+        "companyIds": [
+            null
+        ],
+        "productDescription": "Tuticorin Renewable Project",
+        "productIds": [
+            null
+        ],
+        "productCategoryCpc": null,
+        "productNameCompany": "Tuticorin Renewable project",
+        "comment": null,
+        "pcf": {
+            "declaredUnit": null,
+            "unitaryProductAmount": null,
+            "pCfExcludingBiogenic": null,
+            "pCfIncludingBiogenic": null,
+            "fossilGhgEmissions": null,
+            "fossilCarbonContent": null,
+            "biogenicCarbonContent": null,
+            "dLucGhgEmissions": null,
+            "landManagementGhgEmissions": null,
+            "otherBiogenicGhgEmissions": null,
+            "iLucGhgEmissions": null,
+            "biogenicCarbonWithdrawal": null,
+            "aircraftGhgEmissions": null,
+            "characterizationFactors": null,
+            "ipccCharacterizationFactorsSources": [
+                null
             ],
-            "productDescription": "Vijayanagar Plant",
-            "productIds": [
-                "VJ001"
+            "crossSectoralStandardsUsed": [
+                null
             ],
-            "productCategoryCpc": "1711",
-            "productNameCompany": "Vijayanagar",
-            "pcf": {
-                "declaredUnit": "GJ",
-                "unitaryProductAmount": 12.96,
-                "pCfExcludingBiogenic": null,
-                "pCfIncludingBiogenic": null,
-                "fossilGhgEmissions": null,
-                "fossilCarbonContent": null,
-                "biogenicCarbonContent": null,
-                "dLucGhgEmissions": null,
-                "landManagementGhgEmissions": null,
-                "otherBiogenicGhgEmissions": null,
-                "iLucGhgEmissions": null,
-                "biogenicCarbonWithdrawal": null,
-                "aircraftGhgEmissions": null,
-                "characterizationFactors": null,
-                "ipccCharacterizationFactorsSources": [],
-                "crossSectoralStandardsUsed": [],
-                "productOrSectorSpecificRules": [],
-                "biogenicAccountingMethodology": null,
-                "boundaryProcessesDescription": null,
-                "referencePeriodStart": "2023-01-01",
-                "referencePeriodEnd": "2023-12-31",
-                "geographicScope": {
-                    "geographyRegionOrSubregion": "India"
-                },
-                "secondaryEmissionFactorSources": [],
-                "exemptedEmissionsPercent": null,
-                "exemptedEmissionsDescription": null,
-                "packagingEmissionsIncluded": false,
-                "allocationRulesDescription": null,
-                "uncertaintyAssessmentDescription": null,
-                "primaryDataShare": null,
-                "dqi": {
-                    "coveragePercent": null,
-                    "technologicalDQR": null,
-                    "temporalDQR": null,
-                    "geographicalDQR": null,
-                    "completenessDQR": null,
-                    "reliabilityDQR": null
-                },
-                "assurance": {
-                    "assured": false,
-                    "providerName": null
+            "productOrSectorSpecificRules": [
+                {
+                    "operator": null,
+                    "ruleNames": [
+                        null
+                    ],
+                    "otherOperatorName": null
                 }
-            }
-        },
-        {
-            "id": "2",
-            "specVersion": "1.0",
-            "version": 1,
-            "created": "2023-10-05T00:00:00Z",
-            "status": "active",
-            "validityPeriodStart": "2023-01-01",
-            "validityPeriodEnd": "2023-12-31",
-            "companyName": "JSW Energy",
-            "companyIds": [
-                "JSW001"
             ],
-            "productDescription": "Ratnagiri Plant",
-            "productIds": [
-                "RT001"
-            ],
-            "productCategoryCpc": "1711",
-            "productNameCompany": "Ratnagiri",
-            "pcf": {
-                "declaredUnit": "GJ",
-                "unitaryProductAmount": 103,
-                "pCfExcludingBiogenic": null,
-                "pCfIncludingBiogenic": null,
-                "fossilGhgEmissions": null,
-                "fossilCarbonContent": null,
-                "biogenicCarbonContent": null,
-                "dLucGhgEmissions": null,
-                "landManagementGhgEmissions": null,
-                "otherBiogenicGhgEmissions": null,
-                "iLucGhgEmissions": null,
-                "biogenicCarbonWithdrawal": null,
-                "aircraftGhgEmissions": null,
-                "characterizationFactors": null,
-                "ipccCharacterizationFactorsSources": [],
-                "crossSectoralStandardsUsed": [],
-                "productOrSectorSpecificRules": [],
-                "biogenicAccountingMethodology": null,
-                "boundaryProcessesDescription": null,
-                "referencePeriodStart": "2023-01-01",
-                "referencePeriodEnd": "2023-12-31",
-                "geographicScope": {
-                    "geographyRegionOrSubregion": "India"
-                },
-                "secondaryEmissionFactorSources": [],
-                "exemptedEmissionsPercent": null,
-                "exemptedEmissionsDescription": null,
-                "packagingEmissionsIncluded": false,
-                "allocationRulesDescription": null,
-                "uncertaintyAssessmentDescription": null,
-                "primaryDataShare": null,
-                "dqi": {
-                    "coveragePercent": null,
-                    "technologicalDQR": null,
-                    "temporalDQR": null,
-                    "geographicalDQR": null,
-                    "completenessDQR": null,
-                    "reliabilityDQR": null
-                },
-                "assurance": {
-                    "assured": false,
-                    "providerName": null
+            "biogenicAccountingMethodology": null,
+            "boundaryProcessesDescription": null,
+            "referencePeriodStart": null,
+            "referencePeriodEnd": null,
+            "geographicScope": {
+                "geographyRegionOrSubregion": null
+            },
+            "secondaryEmissionFactorSources": [
+                {
+                    "name": null,
+                    "version": null
                 }
+            ],
+            "exemptedEmissionsPercent": null,
+            "exemptedEmissionsDescription": null,
+            "packagingEmissionsIncluded": null,
+            "allocationRulesDescription": null,
+            "uncertaintyAssessmentDescription": null,
+            "primaryDataShare": null,
+            "dqi": {
+                "coveragePercent": null,
+                "technologicalDQR": null,
+                "temporalDQR": null,
+                "geographicalDQR": null,
+                "completenessDQR": null,
+                "reliabilityDQR": null
+            },
+            "assurance": {
+                "assurance": null,
+                "providerName": null
             }
         }
-    ]
+    }
 ]

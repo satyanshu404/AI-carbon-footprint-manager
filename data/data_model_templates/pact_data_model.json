@@ -1,83 +1,83 @@
 [
     {
-        "id": "<string> a unique identifier for the ProductFootprint, if not present then null",
-        "specVersion": "<string> the version of the specification, if not present then null",
-        "version": "<integer> the version number of the ProductFootprint, if not present then null",
-        "created": "<string> the creation timestamp of the ProductFootprint, if not present then null",
-        "status": "<string> the status of the ProductFootprint, if not present then null",
-        "validityPeriodStart": "<string> the start of the validity period, if not present then null",
-        "validityPeriodEnd": "<string> the end of the validity period, if not present then null",
-        "companyName": "<string> the name of the company, if not present then null",
+        "id": "<string>, a unique identifier for the item, if not present then null",
+        "specVersion": "<string>, the version of the specification, if not present then null",
+        "version": "<integer>, the version number, if not present then null",
+        "created": "<string>, the creation timestamp, if not present then null",
+        "status": "<string>, the status of the item, if not present then null",
+        "validityPeriodStart": "<string>, the start of the validity period, if not present then null",
+        "validityPeriodEnd": "<string>, the end of the validity period, if not present then null",
+        "companyName": "<string>, the name of the company, if not present then null",
         "companyIds": [
-            "<string> the unique identifiers for the company, if not present then null"
+            "<string>, unique identifiers for the company, if not present then null"
         ],
-        "productDescription": "<string> the description of the product, if not present then null",
+        "productDescription": "<string>, description of the product, if not present then null",
         "productIds": [
-            "<string> the unique identifiers for the product, if not present then null"
+            "<string>, unique identifiers for the product, if not present then null"
         ],
-        "productCategoryCpc": "<string> the CPC category of the product, if not present then null",
-        "productNameCompany": "<string> the company's name for the product, if not present then null",
-        "comment": "<string> any additional comments, if not present then null",
+        "productCategoryCpc": "<string>, the CPC category of the product, if not present then null",
+        "productNameCompany": "<string>, the name of the product as per the company, if not present then null",
+        "comment": "<string>, any comments, if not present then null",
         "pcf": {
-            "declaredUnit": "<string> the declared unit of the product, if not present then null",
-            "unitaryProductAmount": "<string> the amount of product per declared unit, if not present then null",
-            "pCfExcludingBiogenic": "<string> the PCF excluding biogenic emissions, if not present then null",
-            "pCfIncludingBiogenic": "<string> the PCF including biogenic emissions, if not present then null",
-            "fossilGhgEmissions": "<string> the fossil GHG emissions, if not present then null",
-            "fossilCarbonContent": "<string> the fossil carbon content, if not present then null",
-            "biogenicCarbonContent": "<string> the biogenic carbon content, if not present then null",
-            "dLucGhgEmissions": "<string> the direct land-use change GHG emissions, if not present then null",
-            "landManagementGhgEmissions": "<string> the land management GHG emissions, if not present then null",
-            "otherBiogenicGhgEmissions": "<string> the other biogenic GHG emissions, if not present then null",
-            "iLucGhgEmissions": "<string> the indirect land-use change GHG emissions, if not present then null",
-            "biogenicCarbonWithdrawal": "<string> the biogenic carbon withdrawal, if not present then null",
-            "aircraftGhgEmissions": "<string> the aircraft GHG emissions, if not present then null",
-            "characterizationFactors": "<string> the characterization factors, if not present then null",
+            "declaredUnit": "<string>, the declared unit, if not present then null",
+            "unitaryProductAmount": "<string>, the amount per unit of product, if not present then null",
+            "pCfExcludingBiogenic": "<string>, PCF excluding biogenic carbon, if not present then null",
+            "pCfIncludingBiogenic": "<string>, PCF including biogenic carbon, if not present then null",
+            "fossilGhgEmissions": "<string>, fossil GHG emissions, if not present then null",
+            "fossilCarbonContent": "<string>, fossil carbon content, if not present then null",
+            "biogenicCarbonContent": "<string>, biogenic carbon content, if not present then null",
+            "dLucGhgEmissions": "<string>, dLUC GHG emissions, if not present then null",
+            "landManagementGhgEmissions": "<string>, land management GHG emissions, if not present then null",
+            "otherBiogenicGhgEmissions": "<string>, other biogenic GHG emissions, if not present then null",
+            "iLucGhgEmissions": "<string>, iLUC GHG emissions, if not present then null",
+            "biogenicCarbonWithdrawal": "<string>, biogenic carbon withdrawal, if not present then null",
+            "aircraftGhgEmissions": "<string>, aircraft GHG emissions, if not present then null",
+            "characterizationFactors": "<string>, characterization factors, if not present then null",
             "ipccCharacterizationFactorsSources": [
-                "<string> the sources of IPCC characterization factors, if not present then null"
+                "<string>, IPCC characterization factors sources, if not present then null"
             ],
             "crossSectoralStandardsUsed": [
-                "<string> the cross-sectoral standards used, if not present then null"
+                "<string>, cross-sectoral standards used, if not present then null"
             ],
             "productOrSectorSpecificRules": [
                 {
-                    "operator": "<string> the operator of the rule, if not present then null",
+                    "operator": "<string>, the operator, if not present then null",
                     "ruleNames": [
-                        "<string> the names of the rules, if not present then null"
+                        "<string>, rule names, if not present then null"
                     ],
-                    "otherOperatorName": "<string> the name of the other operator, if not present then null"
+                    "otherOperatorName": "<string>, the name of the other operator, if not present then null"
                 }
             ],
-            "biogenicAccountingMethodology": "<string> the biogenic accounting methodology, if not present then null",
-            "boundaryProcessesDescription": "<string> the description of boundary processes, if not present then null",
-            "referencePeriodStart": "<string> the start of the reference period, if not present then null",
-            "referencePeriodEnd": "<string> the end of the reference period, if not present then null",
+            "biogenicAccountingMethodology": "<string>, biogenic accounting methodology, if not present then null",
+            "boundaryProcessesDescription": "<string>, boundary processes description, if not present then null",
+            "referencePeriodStart": "<string>, reference period start, if not present then null",
+            "referencePeriodEnd": "<string>, reference period end, if not present then null",
             "geographicScope": {
-                "geographyRegionOrSubregion": "<string> the geography region or subregion, if not present then null"
+                "geographyRegionOrSubregion": "<string>, geographic region or subregion, if not present then null"
             },
             "secondaryEmissionFactorSources": [
                 {
-                    "name": "<string> the name of the secondary emission factor source, if not present then null",
-                    "version": "<string> the version of the secondary emission factor source, if not present then null"
+                    "name": "<string>, the name of the source, if not present then null",
+                    "version": "<string>, the version of the source, if not present then null"
                 }
             ],
-            "exemptedEmissionsPercent": "<integer> the percentage of exempted emissions, if not present then null",
-            "exemptedEmissionsDescription": "<string> the description of exempted emissions, if not present then null",
-            "packagingEmissionsIncluded": "<boolean> whether packaging emissions are included, if not present then null",
-            "allocationRulesDescription": "<string> the description of allocation rules, if not present then null",
-            "uncertaintyAssessmentDescription": "<string> the description of uncertainty assessment, if not present then null",
-            "primaryDataShare": "<float> the share of primary data, if not present then null",
+            "exemptedEmissionsPercent": "<number>, the percent of exempted emissions, if not present then null",
+            "exemptedEmissionsDescription": "<string>, the description of exempted emissions, if not present then null",
+            "packagingEmissionsIncluded": "<boolean>, whether packaging emissions are included, if not present then null",
+            "allocationRulesDescription": "<string>, allocation rules description, if not present then null",
+            "uncertaintyAssessmentDescription": "<string>, uncertainty assessment description, if not present then null",
+            "primaryDataShare": "<number>, the share of primary data, if not present then null",
             "dqi": {
-                "coveragePercent": "<integer> the percentage coverage of data quality indicators, if not present then null",
-                "technologicalDQR": "<float> the technological data quality rating, if not present then null",
-                "temporalDQR": "<float> the temporal data quality rating, if not present then null",
-                "geographicalDQR": "<float> the geographical data quality rating, if not present then null",
-                "completenessDQR": "<float> the completeness data quality rating, if not present then null",
-                "reliabilityDQR": "<float> the reliability data quality rating, if not present then null"
+                "coveragePercent": "<number>, the percent coverage, if not present then null",
+                "technologicalDQR": "<string>, technological DQR, if not present then null",
+                "temporalDQR": "<string>, temporal DQR, if not present then null",
+                "geographicalDQR": "<string>, geographical DQR, if not present then null",
+                "completenessDQR": "<string>, completeness DQR, if not present then null",
+                "reliabilityDQR": "<string>, reliability DQR, if not present then null"
             },
             "assurance": {
-                "assurance": "<boolean> whether assurance is provided, if not present then null",
-                "providerName": "<string> the name of the assurance provider, if not present then null"
+                "assurance": "<boolean>, whether assurance is provided, if not present then null",
+                "providerName": "<string>, the name of the assurance provider, if not present then null"
             }
         }
     }
