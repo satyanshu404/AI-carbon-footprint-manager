@@ -17,6 +17,51 @@ def general_instruction():
     
     return instruction
 
+def get_prompt_for_data_model_extractor():
+    '''Get the prompt for data model extractor'''
+    return '''
+### Overview:
+Our main objective is to find the carbon footprint of a product based on the company's environmental data and to store the data, we need a data model.
+so Your objective is to extract a comprehensive data model related to the carbon footprint of a product from a given documentation file and save it in a generic JSON format.
+
+Task:
+1. Carefully read and analyze the documentation file to identify the relevant data model.
+2. Extract the data model, ensuring to include the data types for each field, descriptions, and instructions to set any missing data to null.
+3. Format the data model in the following structure.
+4. Save the data model in a JSON file.
+
+Input:
+Documentation file path.
+
+Output:
+A JSON file containing the extracted data model with field data types, descriptions, and handling of missing data.
+for example:
+list(
+    dict(
+        "field1": "<data_type>, a unique identifier for the item, if not present then null",
+        'field2': list(
+                '<string>, an unique identifier for the item.'
+            ),
+        ...
+    )
+)
+Note: keep the data type in angular brackets only followed by the description of the field.
+Note: Always pass the content as list of object, else the futher saving process will break and its very crucial.
+Note: at finaly after saving the file, only return the file path of the saved file, nothing else. its very crucial.
+
+Data strorage format:
+Save directory: {0}
+with the file name as 'type-of-data-model_data_model.json'. use the name from the documentation, 
+For eg. pact_data_model.json, note that it is also crucial, use specific name as given in the documentation.
+
+### Important Notes:
+- Ensure to extract the complete data model from the documentation file.
+- Save the file in the specified directory with the correct file name.
+- Always return the file path of the saved file, nothing else, no text, no explanations just the file path.
+- Validate the output for correct formatting and completeness.
+- Complete the whole task, user will not be present to complete your leftover task.
+'''
+
 def get_system_prompt_for_ai_assistant():
     # Get the AI assistant prompt template
     return """
@@ -95,25 +140,33 @@ When presented with a user input, follow these steps:
 def get_search_engine_prompt():
     # Get the search engine prompt template
     return """
-Objective: To Collect and present the products of a specified company along with their carbon footprints in a JSON format.
-Input: Company name (mostly, not always).
-Output: A JSON object containing the company's most important products and their carbon footprints in full details using the provided template.
-{0}
-The response should be in this JSON template only. 
+Overview:
+Your task is to collect and present the products of a specified company along with their carbon footprints in a JSON format.
 
-Ideas:
-1. Search for the company's official website and look for the products and their carbon footprints.
+Task:
+1. Search for the company's official website to find information about their products and carbon footprints.
 2. Search for the company's sustainability reports or other relevant documents.
-3. First search for the companies most important products, then search for their carbon footprints.
-4. Search with the product names in directory or search tool for the carbon footprints.
+3. Identify the company's most important products and search for detailed carbon footprint information for each.
+4. If needed, search within directories or use a search tool to locate the carbon footprints for the identified products.
 
-Guidelines:
-Accuracy is Crucial: Do not fabricate data. Ensure the information is accurate and reliable.
-Understand the Problem: Focus on collecting and creating the data model specific to the query. Avoid including irrelevant data.
-Use Provided Tools: Check the directory first. If data isn't available, use the search tool.
-Extensive Search: For quality data/informations, do extensive search with detailded queries.
-No Assumptions: Always search for data if it's not available. Do not make assumptions.
-Final Output: Provide the response in the specified JSON format only, do not include any additional text.
+Input:
+Company name (mostly, not always).
+
+Output:
+A JSON object containing the company's most important products and their carbon footprints, presented using the provided template.
+Template: {0}
+
+Note: The response should be in this JSON template only.
+Note: Always provide the final response in the specified JSON format only, do not include any additional text. 
+
+
+Notes:
+- Accuracy is Crucial: Do not fabricate data. Ensure the information is accurate and reliable.
+- Understand the Problem: Focus on collecting and creating the data model specific to the query. Avoid including irrelevant data.
+- Use Provided Tools: Check the directory first. If data isn't available, use the search tool.
+- Extensive Search: For quality data/informations, do extensive search with detailded queries.
+- No Assumptions: Always search for data if it's not available. Do not make assumptions.
+- Always provide the response in the specified JSON format only, do not include any additional text, or heading or explaination, just final json response.
 """
 
 def get_json_summary_prompt_template():
@@ -167,35 +220,49 @@ Guidelines:
 
 def get_data_model_generator_prompt():
     return """
-Task: 
-1. Create the data models for all products which are responsible for carbon emissions or greenhouse gases based on the company's environmental data.
-2. Write all the the data models in a JSON file one by one for each product in one file only, whose name can be given in this format company_name_data_model.json.
-3. Finally read that file to show the results as json.
+### Task Overview:
+You need to create data models for products associated with carbon emissions or greenhouse gases based on a company's environmental data. Compile these models into a single JSON file and then read the file to display the results.
+
+Task:
+1. Analyze the company's environmental data files to identify products associated with carbon emissions or greenhouse gases.
+2. For each product, fill out the data model using the provided format, ensuring all fields are populated with values from the company's data.
+3. Write all the data models for all products into a JSON file name it in format company_name_data_model.json.
+for example: "hitachi_data_model.json"
+4. Save the JSON file just after each product's data model is completed.
 
 Input:
 1. Company's environmental data file paths
+Note: consider only the given file paths, no other data should be used.
 2. Data model format: 
 {0}
-You are strictly advised to find the data for each field that are asked in the data model and fill the JSON object accordingly.
-For example:
-Let say in given company's data, there are n products for which carbon emissions or greenhouse gases data is available like coal, oil, gas, etc. 
-Then you should find the values for the key present in the data model for each product and fill the JSON object and write the content in the file for each product and then finally read that file to show results.
-There must be n data model in the final JSON file.
 
-So run in loop, find values for the key present in the data model for n product and fill the JSON object with correct values and write the content in the file for each product and then finally read that file to show results.
+Note: the structure of the JSON object should be same as the given data model, no changes in the structure is allowed.
+Note: Always save the json object after finding the values for each data model. Always remeber this step, it is crucial.
+Only save the results nothing else.
+Note: While saving the json, make sure to pass as list of dictionary, else the futher saving process will break.
+Note: finaly return only the file name of the json file, nothing else. its very crucial.
+for example: "hitachi_data_model.json"
 
-###Important Notes###:
+###Guidelines:
 - Ensure for each product, all the values of Data model are from the companies files only.
 - Use simply null for missing values instead of omitting fields.
-- Keep the same given Data Model format for all products.
 - Validate the final JSON output for correct formatting and completeness.
+- Only provide the output in the specified format only, no additional text.
+- Only return the file path of the saved file, nothing else, no explanations just the file path.
 - Complete the whole task, user will not be present to complete your leftover task.
 """
 
 def get_prompt_for_getting_product():
     # Get the prompt for getting the product
     return '''
-Extract product names from the given document where carbon emmsions or emission data is explicitly provided. Return these as a Python list.
+### Overview:
+You need to extract the product names from a document where explicit carbon emissions or emission data is provided. The aim is to return these product names as a Python list.
+
+Task:
+1. Read the document carefully to identify products with explicit carbon emissions or emission data.
+2. Extract the names of these products.
+3. Return the product names as a Python list.
+
 Input:
 Data Model: {0}
 Document: {1}
@@ -204,13 +271,66 @@ Context:
 The document contains information about various products and their associated carbon emmisons or green house gases. 
 This aim is to facilitate decarbonization through a global network for exchanging verified product carbon emissions data.
 
-Instructions:
-Read the document carefully.
-Identify products with explicit carbon footprint or emission data.
-Return Python list of these product names only.
-If no such products are found, return an empty list.
-Do not include non-product names (e.g., cities, methods) in the list.
-Do not give additional text other than python list.
+Output:
+Python list of product names with explicit carbon footprint or emission data, and if no such products are found, return an empty list.
+
+Note: Validate that the product names are accurate and relevant and are real product names for which companies are interested in carbon footprint data.
+
+### Important Notes:
+- Do not include non-product names (e.g., cities, methods) in the list.
+- Ensure the product names are extracted accurately and are relevant to the carbon emissions data.
+- Provide the output as a Python list of product name, no additional text, no explanations just the list of product names.
+'''
+
+def get_prompt_for_generating_prompt_for_data_model():
+    # Get the prompt for generating prompt for data model
+    return '''
+### Overview:
+Your task is to create a prompt that will effectively retrieve data for building a data model related to a specific product, using information from a company's files.
+
+Task:
+1. Understand the structure and fields of the provided data model.
+2. Create a precise prompt that requests the relevant data for the specified product name.
+3. The prompt should be focused and direct to ensure high accuracy and relevance in vector search results.
+
+Input:
+- Product name: {1}
+- Data model: {0}
+
+Output:
+A detailed and clear prompt that efficiently retrieves the required data for the product based on the data model.
+
+### Important Notes:
+- The prompt should be straightforward and to the point.
+- Aim for clarity and precision to maximize the relevance of the search results.
+- Only generate the prompt; do not any additional text.
+
+'''
+
+def get_prompt_for_datamodel_generation():
+    return '''
+### Overview:
+Your task is to create a JSON object that captures comprehensive product-related information, specifically focusing on carbon footprint data.
+
+Task:
+1. Analyze the provided data carefully.
+2. Using the given product name and documents, create a JSON data model that includes all relevant carbon footprint data for the product.
+3. If any field's values are missing from the documents, set the value to null. Do not invent values or omit fields.
+
+Input:
+- Product name: {0}
+- Documents: {1}
+- Data model: {2}
+
+Output:
+Provide the response strictly in JSON format.
+
+### Important Notes:
+- Ensure the information is accurate and reliable.
+- Do not fabricate data.
+- Keep the JSON structure consistent with the provided data model.
+- Provide the response in the specified JSON format only.
+- do not include any additional text other than JSON.
 '''
 
 def get_system_prompt_for_llm_retriever():
@@ -262,11 +382,21 @@ list(
     ),
     ...
 )
+Note: Only give list of object as the output, no additional text.
+Note: Must save as list of dict, else the futher saving process will break.
+Note: Always save the output after finding the answers for each batch of 3-5 questions. Always remeber this step, it is crucial.
+Only save the results nothing else.
+
+Data strorage format:
+Save directory: {0}
+File Name: "{1}" 
 
 ###Important Notes###:
 - Ensure the questions are relevant to the decarbonization protocol, thats may helps the company to see their progress in the decarbonization.
 - Find the answers from the company's data files only.
 - Try to find the find the answers in the batch of 3-5 questions at a time. 
+- Always save the file after each batch of 3-5 questions answered. Always remeber this step, it is crucial.
+- Only provide the output in the specified format only, no additional text.
 - Provide the output in the specified format only.
 - Validate the final JSON output for correct formatting and completeness.
 - Complete the whole task, user will not be present to complete your leftover task.
@@ -289,16 +419,125 @@ Input:
 
 Output:
 The answer to the user query in a JSON format.
-json(
-    "query": str,
-    "answer": To the point answer to the question, if data not prestent, then write "Data not available".
-    "source": [list of exact sentences from the data files that supports the answer]
+list(
+    json(
+        "question": str,
+        "answer": To the point answer to the question, if data not prestent, then write "Data not available".
+        "source": [list of exact sentences from the data files that supports the answer]
+    )
 )
+Note: Only give list of json object as the output, no additional text.
+Note: Must save as list of dictionary, else the futher saving process will break.
+Note: Always save the output after finding the answers for each questions. Always remeber this step, it is crucial.
+Only save the results nothing else.
+
+Data strorage format:
+Save directory: {0}
+File Name: "{1}" 
 
 ###Important Notes###:
 - Ensure the questions are relevant to the decarbonization protocol, thats may helps the company to see their progress in the decarbonization.
 - Find the answers from the company's data files only.
+- Always save the file after each question answered. Always remeber this step, it is crucial.
+- Only provide the output in the specified format only, no additional text.
 - Provide the output in the specified format only.
 - Validate the final JSON output for correct formatting and completeness.
 - Complete the whole task, user will not be present to complete your leftover task.
+'''
+
+def get_prompt_for_side_by_side_arena_decarbonization_protocol():
+    # Get the prompt for side by side arena decarbonization protocol
+    return '''
+###Overview:
+The Decarbonization Protocol is a set of guidelines and actions aimed at reducing carbon emissions and promoting sustainability.
+So evaluate the two companies progress on the decarbonization protocol by analyzing their environmental data.
+
+Task: 
+1. Read the documentaion files carefully and find all the most important questions that can be asked from any company to know their progress on the decarbonization protocol.
+2. Then select list of 15-20 questions from the pool of all the extracted questions.
+3. Find the answers to those selected questions from the for the given two companies data in batch format, means you can ask 3-5 question at a time.
+
+Input:
+1. Documentation file paths related to the decarbonization protocol.
+2. Data files paths as a list for two comapnies
+
+Output: 
+All the extracted questions and answers must be in a JSON format and return the complete list of 15-20 extracted question answer.
+list(
+    dict(
+        "question": str,
+        "answer A": To the point answer to the question for company A, if data not prestent, then write "Data not available".
+        "source A": [list of exact sentences from the data files that supports the answer]
+        "answer B": To the point answer to the question for company B, if data not prestent, then write "Data not available".
+        "source B": [list of exact sentences from the data files that supports the answer]
+    ),
+    dict(
+        "question": str,
+        "answer A": To the point answer to the question for company A, if data not prestent, then write "Data not available".
+        "source A": [list of exact sentences from the data files that supports the answer]
+        "answer B": To the point answer to the question for company B, if data not prestent, then write "Data not available".
+        "source B": [list of exact sentences from the data files that supports the answer]
+    ),
+    ...
+)
+Note: Only give list of object as the output, no additional text.
+Note: Must save as list of dict, else the futher saving process will break.
+Note: Always save the output after finding the answers for each batch of 3-5 questions. Always remeber this step, it is crucial.
+Only save the results nothing else.
+
+Data strorage format:
+Save directory: {0}
+File Name: "{1}" 
+
+###Important Notes###:
+- Ensure the questions are relevant to the decarbonization protocol, thats may helps the company to see their progress in the decarbonization.
+- Find the answers from the company's data files only.
+- Try to find the answers in the batch of 3-5 questions at a time. 
+- Always save the file after each batch of 3-5 questions answered. Always remeber this step, it is crucial.
+- Only provide the output in the specified format only, no additional text.
+- Provide the output in the specified format only.
+- Validate the final JSON output for correct formatting and completeness.
+- Complete the whole task, user will not be present to complete your leftover task.
+'''
+
+def get_prompt_for_finding_response_to_query():
+    # Get the prompt for finding response
+    return '''
+### Overview:
+You will be provided with a query and a list of responses from a retrieval system. Your task is to find the correct answers to the query.
+
+Task:
+1. Carefully read the provided query and responses.
+2. Find the answer that best addresses the query.
+
+Input:
+Query: {0}
+Responses: {1}
+
+Output:
+Answer: The response that best addresses the query.
+'''
+
+def get_prompt_for_response_comparison():
+    # Get the prompt for response comparison
+    return '''
+###Overview:
+Act like a discriminator model.
+You will be provided with a query and a corresponding response from a retrieval system. Your task is to find whether the response can be used to answer the query, nothing else.
+
+Task:
+1. Carefully read the provided query and responses.
+2. Break down the queires into subqueries and check if the response can be used to answer the query.
+3. Assess if the response can be use to answer the query.
+
+Input:
+Query: {0}
+Response: {1}
+
+Output:
+Feedback: 'YES' or 'NO' in capital letters.
+
+###Important Notes###:
+- Do not provide any additional information, just provide 'YES' or 'NO'.
+- Focus on the relevance of the response to the query.
 '''
