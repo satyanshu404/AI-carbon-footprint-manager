@@ -23,7 +23,9 @@ class DecarbonizationProtocolConstants:
     MAX_ITERATIONS: int = 100
     DATA_REPO_PATH: str = "data/Decarbonization Protocol/Company Data"
     DOCS_REPO_PATH: str = "data/Decarbonization Protocol/Documenations"
-    TASK_LIST: List[str] = field(default_factory=lambda: ['Automatic','Custom'])
+    SAVE_FILE_DIR: str = "data/Decarbonization Protocol/Temporary files"
+    FILE_NAME: str = "temp.json"
+    TASK_LIST: List[str] = field(default_factory=lambda: ['Automatic','Custom', 'Side by Side Arena'])
 
 @dataclass
 class GoogleSearchConstants:
@@ -77,8 +79,55 @@ class DataModelGeneratorConstants:
     })
     DATA_MODEL_LIST: List[str] = field(default_factory=lambda: ['PACT'])
     REPO_PATH: str = "data/tmp_reterival_data"
+    SAVE_FILE_DIR: str = "data/data_model"
 
 @dataclass
 class TextSplitterConstants:
     CHUNK_SIZE: int = 5000
     CHUNK_OVERLAP: int = 1000
+
+@dataclass
+class DataModelExtractorConstants:
+    SAVE_DIR: str = "data/data_model_templates"
+    MAX_EXECUTION_TIME: int = 1000
+    MAX_ITERATIONS: int = 50
+
+@dataclass
+class HybridRetrieverConstants:
+    # llm parameters
+    MODEL_NAME: str = "gpt-4o"
+    TEMPERATURE: float = 0.1
+    # embedding parameters
+    EMBEDDING_MODEL_NAME: str = "text-embedding-3-small"
+    DIMENSIONS: int = 1536
+    # transformation parameters
+    CHUNK_SIZE: int = 1000
+    CHUNK_OVERLAP: int = 100
+    NODES: int = 5
+    KEYWORDS: int = 10
+    SUMMARIES: List[str] = field(default_factory=lambda: ["prev", "self"])
+    # index parameters
+    DEFAULT_DIR: str = 'Database/Indexes'
+    INDEXES: List[str] = field(default_factory=lambda: ["VectorStoreIndex", "SimpleKeywordTableIndex"])
+    # retriever parameters
+    SIMILARITY_TOP_K: int = 2
+
+@dataclass
+class VectorRetrieverConstants:
+    # llm parameters
+    MODEL_NAME: str = "gpt-4o"
+    TEMPERATURE: float = 0.1
+    # embedding parameters
+    EMBEDDING_MODEL_NAME: str = "text-embedding-3-small"
+    DIMENSIONS: int = 1536
+    # transformation parameters
+    CHUNK_SIZE: int = 1000
+    CHUNK_OVERLAP: int = CHUNK_SIZE // 10
+    NODES: int = 5
+    KEYWORDS: int = CHUNK_SIZE // 100
+    SUMMARIES: List[str] = field(default_factory=lambda: ["prev", "self"])
+    # index parameters
+    DEFAULT_DIR: str = 'Database/Indexes'
+    INDEX: str = "VectorStoreIndex"
+    # retriever parameters
+    SIMILARITY_TOP_K: int = 2
