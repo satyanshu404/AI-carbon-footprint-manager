@@ -1,0 +1,68 @@
+[
+    [
+        {
+            "id": "1",
+            "specVersion": "1.0",
+            "version": 1,
+            "created": "2023-10-01",
+            "status": "active",
+            "validityPeriodStart": "2023-01-01",
+            "validityPeriodEnd": "2023-12-31",
+            "companyName": "Tata Steel",
+            "companyIds": [
+                "TataSteel"
+            ],
+            "productDescription": "The new product, Zeremis\u00ae Carbon Lite, is a type of steel with an allocated carbon footprint reduction of up to 100%. Various customers, including Wuppermann, BILSTEIN, EMW Stahl Service, Arania, Permastore, and Hardt Hyperloop, are associated with this product. Additionally, there is a Memorandum of Understanding with Ford to supply Zeremis\u00ae green steel once the IJmuiden steelworks transitions to green hydrogen-based steelmaking.",
+            "productIds": [
+                "ZeremisGreenSteel"
+            ],
+            "productCategoryCpc": "421",
+            "productNameCompany": "Zeremis\u00ae green steel",
+            "pcf": {
+                "declaredUnit": "ton",
+                "unitaryProductAmount": 1,
+                "pCfExcludingBiogenic": 0,
+                "pCfIncludingBiogenic": 0,
+                "fossilGhgEmissions": 0,
+                "fossilCarbonContent": 0,
+                "biogenicCarbonContent": 0,
+                "dLucGhgEmissions": 0,
+                "landManagementGhgEmissions": 0,
+                "otherBiogenicGhgEmissions": 0,
+                "iLucGhgEmissions": 0,
+                "biogenicCarbonWithdrawal": 0,
+                "aircraftGhgEmissions": 0,
+                "characterizationFactors": null,
+                "ipccCharacterizationFactorsSources": [],
+                "crossSectoralStandardsUsed": [],
+                "productOrSectorSpecificRules": [],
+                "biogenicAccountingMethodology": null,
+                "boundaryProcessesDescription": null,
+                "referencePeriodStart": "2022-01-01",
+                "referencePeriodEnd": "2022-12-31",
+                "geographicScope": {
+                    "geographyRegionOrSubregion": "Europe"
+                },
+                "secondaryEmissionFactorSources": [],
+                "exemptedEmissionsPercent": 0,
+                "exemptedEmissionsDescription": null,
+                "packagingEmissionsIncluded": false,
+                "allocationRulesDescription": null,
+                "uncertaintyAssessmentDescription": null,
+                "primaryDataShare": 100,
+                "dqi": {
+                    "coveragePercent": 100,
+                    "technologicalDQR": 1,
+                    "temporalDQR": 1,
+                    "geographicalDQR": 1,
+                    "completenessDQR": 1,
+                    "reliabilityDQR": 1
+                },
+                "assurance": {
+                    "assured": true,
+                    "providerName": "Tata Steel"
+                }
+            }
+        }
+    ]
+]
