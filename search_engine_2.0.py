@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import constants
 from langchain_openai import ChatOpenAI
 from tools import tools, utils
-from tools.create_corpus import create_json_summary
 from tools.get_all_files_of_directory import files_in_directory
 from prompts.prompts import get_react_prompt, get_search_engine_prompt
 from langchain.tools.render import render_text_description
@@ -67,27 +66,32 @@ class SearchEngineAgent:
     def invoke_agent(self):
         try:
             logging.log(logging.INFO, "Running the search engine agent...")
-            agent_executor = self.search_engine_agent()
-            st_callback = StreamlitCallbackHandler(st.container())
-
+            st.set_page_config(layout="wide")
             st.title("Search Agent")
+            st.write('---')
             if 'query' not in st.session_state:
                 st.session_state.query = ''
 
-            st.session_state.query = query = st.text_input("Enter your query:", st.session_state.query)
+            st.session_state.query = query = st.text_input("Enter query:", st.session_state.query)
 
             if st.session_state.query.lower() == "exit":
                 st.write("Exiting...")
                 # Optionally reset the query or handle the exit condition
                 st.session_state.query = ''
 
+            agent_executor = self.search_engine_agent()
+            st_callback = StreamlitCallbackHandler(st.container())
+
             if st.button("Run Agent"):
                 with st.spinner("Processing..."):
                     response = agent_executor.invoke(
                         {"input": query}, 
                         callback_handler=st_callback)
+                    st.write('---')
                     if response['output']:
+                        st.title("Results")
                         st.write(response['output'])
+                        st.write("---")
         except Exception as e:
             logging.log(logging.ERROR, f"An error occurred: {str(e)}")
             st.write(f"An error occurred: {str(e)}")
