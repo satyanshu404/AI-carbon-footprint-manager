@@ -28,10 +28,12 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 class DataModelExtractor:
     ''' Data Model Extractor Agent '''
     def __init__(self):
-        self.tools = [files_in_directory, tools.ai_assistant, tools.read_files, tools.save_as_json]
+        self.tools = [files_in_directory, tools.ai_assistant, tools.retrieve_data_using_llm, tools.save_as_json]
         
         self.repo_path = constants.DataModelGeneratorConstants.REPO_PATH
         self.SAVE_DIR = constants.DataModelExtractorConstants.SAVE_DIR
+
+        os.makedirs(self.repo_path, exist_ok=True)
 
         # creating repo if not exists 
         if not os.path.exists(self.repo_path):
@@ -81,15 +83,37 @@ class DataModelExtractor:
     def save_file(self, file_path: str, content: str):
         with open(file_path, "wb") as f:
             f.write(content)
-        
+
+    def show_results(self, file_path:str):
+        st.title("Results")
+        st.write("---")
+        if os.path.exists(file_path):
+            with open(file_path, "r") as f:
+                data = json.load(f)
+            st.subheader("Data Model:")
+            st.write(data)
+            st.write("---")
+        else:
+            st.write("No file found!")
+
+    def format_json_to_text_form(self, file_path: str) -> None:
+        '''Format the json file for the langchain agent'''
+        logging.log(logging.INFO, "Formatting the json file...")
+        file_name = os.path.basename(file_path).split('.')[0].lower()
+        tools.format_json_to_text_form.invoke({"file_path": file_path, "file_name": file_name})
+        logging.log(logging.INFO, "Json file formatted successfully!")
+
+    
     def invoke_agent(self):
         try:
             logging.log(logging.INFO, "Running the Data Model Extractor Agent...")
+            st.set_page_config(layout="wide")
 
             st.title("Data Model Extractor Agent")
+            st.write("---")
 
             # upload files
-            uploaded_files = st.file_uploader("Select the documentatin files", accept_multiple_files=True)
+            uploaded_files = st.file_uploader("Upload the documentation file(s)", accept_multiple_files=True)
 
             file_paths = []
             # save the files
@@ -110,9 +134,9 @@ class DataModelExtractor:
                     response = agent_executor.invoke(
                         {"input": file_paths}, 
                         callback_handler=st_callback)
-                    if response['output']:
-                        st.write(response['output'])
-            logging.log(logging.INFO, "Data Model Extractor Agent completed successfully...")
+                    self.show_results(response['output'])
+                    self.format_json_to_text_form(response['output'])            
+                    
         except Exception as e:
             logging.log(logging.ERROR, f"An error occurred: {str(e)}")
             st.write(f"An error occurred: {str(e)}")
