@@ -30,6 +30,11 @@ This project is part of the AI Research at Hitachi. The goal of this project is 
         - Automatic full tracking
         - Custom User-Based Tracking
         - Side by Side comparison
+<br>
+<hr>
+<br>
+<img src="data\readme_images\flow-chart.png" alt="Flow-chart" style="border-radius: 15px; width: 100%; max-width: auto; height: auto;">
+
 
 ## Installation
 1. Clone the repository
