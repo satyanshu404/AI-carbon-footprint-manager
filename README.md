@@ -53,7 +53,6 @@ This project is part of the AI Research at Hitachi. The goal of this project is 
     - Create a `.env` file in the root directory and add the following keys to the `.env` file
 
         ```bash
-        LANGCHAIN_API_KEY=<your_langchain_api_key>
         OPENAI_API_KEY=<your_openai_api_key>
         GOOGLE_API_KEY=<your_google_api_key>
         GOOGLE_SEARCH_ENGINE_ID=<your_google_search_engine_id>
