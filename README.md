@@ -34,11 +34,11 @@ This project is part of the AI Research at Hitachi. The goal of this project is 
 ## Installation
 1. Clone the repository
     ```bash
-    git clone https://github.com/satyanshu404/AI-Agent-carbon-footprint.git
+    git clone https://github.com/satyanshu404/AI-carbon-footprint-manager.git
     ```
 2. Change the working directory
     ```bash
-    cd AI-Agent-carbon-footprint
+    cd AI-carbon-footprint-manager
     ```
 3. Install the required packages
     ```bash
