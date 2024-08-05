@@ -1,5 +1,4 @@
 <div align="center">
-<!-- <img src="images/path.png" alt="flow-chart.png" width="1500"/> -->
 
 # Carbon Footprint Management using AI Agents
 
