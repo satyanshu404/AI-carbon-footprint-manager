@@ -33,7 +33,7 @@ This project is part of the AI Research at Hitachi. The goal of this project is 
 <br>
 <hr>
 <br>
-<img src="data\readme_images\flow-chart.png" alt="Flow-chart" style="border-radius: 15px; width: 100%; max-width: auto; height: auto;">
+<a href="url"><img src="data\readme_images\flow-chart.png" alt="Flow-chart" style="border-radius: 15px; width: 100%; max-width: auto; height: auto;"></a>
 
 
 ## Installation
