@@ -1,4 +1,7 @@
 <div align="center">
+<img src="data\readme_images\banner.webp" alt="banner.webp" style="border-radius: 15px; width: 100%; max-width: 2000; height: 10%;">
+<br>
+&nbsp;
 
 # Carbon Footprint Management using AI Agents
 
@@ -11,7 +14,7 @@
 &nbsp;
 </div>
 
-## Overview
+## About
 This project is part of the AI Research at Hitachi. The goal of this project is to design an automated agentic application that can perform the following components of carbon footprint management:
 1. <b>Automated Data Model Template Extraction</b>
     - Develop agents to extract data model templates from provided documentation automatically
@@ -31,12 +34,12 @@ This project is part of the AI Research at Hitachi. The goal of this project is 
         - Custom User-Based Tracking
         - Side by Side comparison
 <br>
-<hr>
+<!-- <hr> -->
 <br>
-<a href="url"><img src="data\readme_images\flow-chart.png" alt="Flow-chart" style="border-radius: 15px; width: 100%; max-width: auto; height: auto;"></a>
+<img src="data\readme_images\flow-chart.png" alt="Flow-chart" style="border-radius: 15px; width: 100%; max-width: 2000; height: auto;">
 
 
-## Installation
+## Getting Started
 1. Clone the repository
     ```bash
     git clone https://github.com/satyanshu404/AI-carbon-footprint-manager.git
@@ -85,7 +88,7 @@ This project is part of the AI Research at Hitachi. The goal of this project is 
         streamlit run decarbonization_protocol.py
         ```
 
-## Task Descriptions
+## Components in Depth
 1. <b>Automated Data Model Template Extraction</b>
     - This agents can extract data model templates from provided documentation autonomously from any kind of documentation.
     - The agent extracts the data model templates from the documentation and store them in a JSON structured format.
@@ -122,7 +125,7 @@ This project is part of the AI Research at Hitachi. The goal of this project is 
     - The agents are based on ReACT framework [[paper](https://arxiv.org/pdf/2210.03629)], which gives the model to reason, act, and communicate with the tools.
     - The agents are designed to work on a wide range of formats and can be easily customized to suit the needs of different companies.
 
-## Optimizations that can be done
+## Future Work
 1. <b>Carbon Footprint Calculator</b>
     - Complete the development of the Carbon Footprint Calculator agent.
     - The agent will be able to calculate the carbon footprint of a company based on the data models created for the company.
